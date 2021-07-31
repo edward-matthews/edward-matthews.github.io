@@ -1,2 +1,0 @@
-(this["webpackJsonpedward-matthews.github.io"]=this["webpackJsonpedward-matthews.github.io"]||[]).push([[0],{10:function(t,e,n){"use strict";n.r(e);var r=n(1),c=n.n(r),i=n(3),s=n.n(i),o=(n(8),n(0)),a=function(){return Object(o.jsx)(o.Fragment,{})};s.a.render(Object(o.jsx)(c.a.StrictMode,{children:Object(o.jsx)(a,{})}),document.getElementById("root"))},8:function(t,e,n){}},[[10,1,2]]]);
-//# sourceMappingURL=main.2740fad5.chunk.js.map
