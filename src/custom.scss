@@ -1,4 +1,17 @@
 // Override default variables before the import
-$body-bg: #333;
+$primary: #0C4B33;
+$secondary: #44B78B;
+$success: #3AAED8;
+$info: #FFFCE8;
+$warning: #F6AE2D;
+$danger: #E3655B;
+$light: #CBBFBB;
+$dark: #333333;
+$navbar-dark-color: rgba($light, .55) !default;
+$navbar-dark-hover-color: rgba($light, .75) !default;
+$navbar-dark-active-color: $light !default;
+$navbar-dark-brand-color: $secondary !default;
+$navbar-dark-brand-hover-color: $secondary !default;
+// $container-max-widths: ( sm: 270px, md: 360px, lg: 480px, xl: 570px, xxl: 670px);
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
