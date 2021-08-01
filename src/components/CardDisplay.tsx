@@ -1,24 +1,61 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
+import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
+import { Octokit } from 'octokit';
+import moment from 'moment';
 
-interface Props {
-    title: string;
-    text: string;
-    updated: string;
+const octokit = new Octokit({
+    auth: process.env.REACT_APP_ACCESS_TOKEN,
+    userAgent: 'edward-matthews.github.io v1.0.0',
+});
+type GetRepositoryResponseType = GetResponseDataTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
+
+// const handleButtonClick() => {
+//     return null
+// }
+
+function withinDays(date: string, period: number): boolean {
+    const now = moment();
+    const then = moment(date, moment.ISO_8601);
+    const week = moment.duration(period, 'days');
+    const duration = moment.duration(now.diff(then));
+
+    return duration < week;
 }
 
-const CardDisplay: React.FC<Props> = (props: Props) => {
+const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
     return (
         <Col>
-            <Card bg="secondary" text="dark" style={{ width: '18rem' }} className="m-2 g-2" border="dark">
-                <Card.Img variant="top" src="https://via.placeholder.com/451x160" />
-                <Card.Body>
-                    <Card.Title>{props.title}</Card.Title>
-                    <Card.Text>{props.text}</Card.Text>
+            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-3 g-auto h-100" border="dark">
+                <Card.Header style={{ height: '2.5rem' }}>
+                    {withinDays(repo.created_at, 14) && (
+                        <span>
+                            <Badge pill bg="danger">
+                                New!
+                            </Badge>{' '}
+                        </span>
+                    )}
+                    {withinDays(repo.updated_at, 7) && (
+                        <Badge pill bg="warning">
+                            Updated Recently!
+                        </Badge>
+                    )}
+                </Card.Header>
+
+                <Card.Body className="d-flex flex-column">
+                    <Card.Title>{repo.name}</Card.Title>
+                    <Card.Img src="https://via.placeholder.com/150" />
+                    <Card.Text>{repo.description}</Card.Text>
+                    <Button href={repo.html_url} variant="light" className="mt-auto">
+                        View Code
+                    </Button>
                 </Card.Body>
-                <Card.Footer>
-                    <small className="text-muted">Last updated {props.updated} ago</small>
+
+                <Card.Footer className="text-muted text-end small">
+                    Updated {moment(repo.updated_at, moment.ISO_8601).fromNow()}
                 </Card.Footer>
             </Card>
         </Col>

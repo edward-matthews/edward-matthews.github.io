@@ -1,28 +1,63 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import CardDisplay from '../components/CardDisplay';
-import Row from 'react-bootstrap/Row';
+import CardGroup from 'react-bootstrap/CardGroup';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import { Octokit } from 'octokit';
+import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
-interface ICardProp {
-    title: string;
-    text: string;
-    updated: string;
-}
-
-const CardsArray: ICardProp[] = [
-    {
-        title: 'Hello',
-        text: 'This is the text',
-        updated: '14 mins',
-    },
-];
+const octokit = new Octokit({
+    auth: process.env.REACT_APP_ACCESS_TOKEN,
+    userAgent: 'edward-matthews.github.io v1.0.0',
+});
+type GetRepositoryResponseType = GetResponseTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
 
 const Portfolio: React.FC = () => {
+    const [repositories, setRepositories] = useState<GetRepositoryResponseType[]>([]);
+    useEffect(() => {
+        const promises: Promise<GetRepositoryResponseType>[] = [];
+        octokit.rest.users
+            .getAuthenticated()
+            .then(() => octokit.rest.repos.listForUser({ username: 'edward-matthews', sort: 'updated' }))
+            .then((res) => res.data)
+            .then((data) =>
+                data.forEach((repository) =>
+                    promises.push(octokit.rest.repos.get({ owner: 'edward-matthews', repo: repository.name })),
+                ),
+            )
+            .then(() => Promise.all(promises).then((res) => setRepositories(res)))
+            .catch((err) => console.log(err));
+    }, []);
+    const languages = repositories.map((repo) => repo.data.language).filter((x): x is string => x !== null);
+    const [languageSelect, setLanguageSelect] = useState<string>('all');
+    function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        setLanguageSelect(e.target.value);
+    }
+
     return (
-        <Row className="g-0">
-            {CardsArray.map((props, idx) => (
-                <CardDisplay {...props} key={idx} />
-            ))}
-        </Row>
+        <>
+            <FloatingLabel controlId="floatingSelect" label="Languages">
+                <Form.Select aria-label="Language Select" onChange={handleChange} defaultValue="all">
+                    <option value="all">All</option>
+                    {languages.map((language, idx) => (
+                        <option value={language} key={idx}>
+                            {language}
+                        </option>
+                    ))}
+                </Form.Select>
+            </FloatingLabel>
+            <CardGroup>
+                {repositories.map((repo) => {
+                    // if (languageSelect === repo.data.language) {
+                    //     return <CardDisplay {...repo.data} key={repo.data.id} />;
+                    // }
+                    return languageSelect === repo.data.language || languageSelect === 'all' ? (
+                        <CardDisplay {...repo.data} key={repo.data.id} />
+                    ) : null;
+                })}
+            </CardGroup>
+        </>
     );
 };
 
