@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 const NavigationBar: React.FC = () => {
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" sticky="top">
+            <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" sticky="top" className="mb-2">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         Edward Matthews

@@ -8,7 +8,6 @@ import { Octokit } from 'octokit';
 import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
 const octokit = new Octokit({
-    auth: process.env.REACT_APP_ACCESS_TOKEN,
     userAgent: 'edward-matthews.github.io v1.0.0',
 });
 type GetRepositoryResponseType = GetResponseTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
@@ -17,9 +16,8 @@ const Portfolio: React.FC = () => {
     const [repositories, setRepositories] = useState<GetRepositoryResponseType[]>([]);
     useEffect(() => {
         const promises: Promise<GetRepositoryResponseType>[] = [];
-        octokit.rest.users
-            .getAuthenticated()
-            .then(() => octokit.rest.repos.listForUser({ username: 'edward-matthews', sort: 'updated' }))
+        octokit.rest.repos
+            .listForUser({ username: 'edward-matthews', sort: 'updated' })
             .then((res) => res.data)
             .then((data) =>
                 data.forEach((repository) =>
@@ -47,7 +45,7 @@ const Portfolio: React.FC = () => {
                     ))}
                 </Form.Select>
             </FloatingLabel>
-            <CardGroup>
+            <CardGroup className="mx-auto">
                 {repositories.map((repo) => {
                     return languageSelect === repo.data.language || languageSelect === 'all' ? (
                         <CardDisplay {...repo.data} key={repo.data.id} />

@@ -13,10 +13,6 @@ const octokit = new Octokit({
 });
 type GetRepositoryResponseType = GetResponseDataTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
 
-// const handleButtonClick() => {
-//     return null
-// }
-
 function withinDays(date: string, period: number): boolean {
     const now = moment();
     const then = moment(date, moment.ISO_8601);
@@ -29,7 +25,7 @@ function withinDays(date: string, period: number): boolean {
 const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
     return (
         <Col>
-            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-3 g-auto h-100" border="dark">
+            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-2 g-2 h-100" border="dark">
                 <Card.Header style={{ height: '2.5rem' }}>
                     {withinDays(repo.created_at, 14) && (
                         <span>
