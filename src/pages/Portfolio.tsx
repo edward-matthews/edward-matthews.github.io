@@ -49,9 +49,6 @@ const Portfolio: React.FC = () => {
             </FloatingLabel>
             <CardGroup>
                 {repositories.map((repo) => {
-                    // if (languageSelect === repo.data.language) {
-                    //     return <CardDisplay {...repo.data} key={repo.data.id} />;
-                    // }
                     return languageSelect === repo.data.language || languageSelect === 'all' ? (
                         <CardDisplay {...repo.data} key={repo.data.id} />
                     ) : null;
