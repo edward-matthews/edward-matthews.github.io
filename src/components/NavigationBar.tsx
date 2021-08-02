@@ -38,7 +38,7 @@ const NavigationBar: React.FC = () => {
                             <Nav.Link as={Link} to="/articles" onClick={() => setExpanded(false)}>
                                 Articles
                             </Nav.Link>
-                            <Button variant="secondary" onClick={() => setModalOpen(true)}>
+                            <Button variant="secondary" onClick={() => [setExpanded(false), setModalOpen(true)]}>
                                 Contact
                             </Button>
                         </Nav>
