@@ -25,7 +25,7 @@ function withinDays(date: string, period: number): boolean {
 const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
     return (
         <Col>
-            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-2 g-2 h-100" border="dark">
+            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-2 mx-auto g-2 h-100" border="dark">
                 <Card.Header style={{ height: '2.5rem' }}>
                     {withinDays(repo.created_at, 14) && (
                         <span>

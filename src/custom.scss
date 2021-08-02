@@ -13,5 +13,9 @@ $navbar-dark-active-color: $light !default;
 $navbar-dark-brand-color: $secondary !default;
 $navbar-dark-brand-hover-color: $secondary !default;
 // $container-max-widths: ( sm: 270px, md: 360px, lg: 480px, xl: 570px, xxl: 670px);
+body {
+    padding-top: 70px;
+}
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';

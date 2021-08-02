@@ -45,7 +45,7 @@ const Portfolio: React.FC = () => {
                     ))}
                 </Form.Select>
             </FloatingLabel>
-            <CardGroup className="mx-auto">
+            <CardGroup>
                 {repositories.map((repo) => {
                     return languageSelect === repo.data.language || languageSelect === 'all' ? (
                         <CardDisplay {...repo.data} key={repo.data.id} />
