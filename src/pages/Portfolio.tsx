@@ -7,12 +7,11 @@ import Form from 'react-bootstrap/Form';
 import { Octokit } from 'octokit';
 import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
-const octokit = new Octokit({
-    userAgent: 'edward-matthews.github.io v1.0.0',
-});
-type GetRepositoryResponseType = GetResponseTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
-
 const Portfolio: React.FC = () => {
+    const octokit = new Octokit({
+        userAgent: 'edward-matthews.github.io v1.0.0',
+    });
+    type GetRepositoryResponseType = GetResponseTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
     const [repositories, setRepositories] = useState<GetRepositoryResponseType[]>([]);
     useEffect(() => {
         const promises: Promise<GetRepositoryResponseType>[] = [];

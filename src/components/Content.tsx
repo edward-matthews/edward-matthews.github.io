@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Portfolio from '../pages/Portfolio';
-import Contact from '../pages/Contact';
 
 const Content: React.FC = () => {
     return (
@@ -16,9 +15,6 @@ const Content: React.FC = () => {
             </Route>
             <Route path="/portfolio">
                 <Portfolio />
-            </Route>
-            <Route path="/contact">
-                <Contact />
             </Route>
         </Switch>
     );

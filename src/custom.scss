@@ -17,5 +17,13 @@ body {
     padding-top: 70px;
 }
 
+tr {
+    font-size: 2em;
+}
+
+tr {
+    cursor: pointer;
+}
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';

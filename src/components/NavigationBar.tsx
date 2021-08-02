@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import ContactModal from './ContactModal';
 
 const NavigationBar: React.FC = () => {
     const [expanded, setExpanded] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     return (
         <>
@@ -35,13 +38,14 @@ const NavigationBar: React.FC = () => {
                             <Nav.Link as={Link} to="/articles" onClick={() => setExpanded(false)}>
                                 Articles
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/contact" onClick={() => setExpanded(false)}>
+                            <Button variant="secondary" onClick={() => setModalOpen(true)}>
                                 Contact
-                            </Nav.Link>
+                            </Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            <ContactModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
     );
 };
