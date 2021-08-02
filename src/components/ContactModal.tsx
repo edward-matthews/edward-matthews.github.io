@@ -52,20 +52,26 @@ const ContactModal: React.FC<Props> = ({ modalOpen, setModalOpen }: Props) => {
                     ) : (
                         <Table borderless hover>
                             <tbody>
-                                <tr onClick={() => setDisplayContactForm(true)}>
+                                <tr onClick={() => setDisplayContactForm(true)} style={{ textDecorationColor: 'red' }}>
                                     <td>
                                         <i className="bi bi-envelope-fill"></i>
                                     </td>
-                                    <td>Email</td>
+                                    <td className="willItHover">Email</td>
                                 </tr>
-                                <tr onClick={() => handleClick('https://github.com/edward-matthews')}>
+                                <tr
+                                    onClick={() => handleClick('https://github.com/edward-matthews')}
+                                    style={{ textDecorationColor: '#24292e' }}
+                                >
                                     <td>
                                         <i className="bi bi-github"></i>
                                     </td>
 
                                     <td>GitHub</td>
                                 </tr>
-                                <tr onClick={() => handleClick('https://www.google.com/search?q=linkedin')}>
+                                <tr
+                                    onClick={() => handleClick('https://www.google.com/search?q=linkedin')}
+                                    style={{ textDecorationColor: '#2867B2' }}
+                                >
                                     <td>
                                         <i className="bi bi-linkedin"></i>
                                     </td>

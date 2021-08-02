@@ -19,10 +19,12 @@ body {
 
 tr {
     font-size: 2em;
+    cursor: pointer;
 }
 
-tr {
-    cursor: pointer;
+tr:hover {
+    text-decoration: underline solid 0.15em;
+    background-color: rgba($light, .1);
 }
 
 // Import Bootstrap and its default variables
