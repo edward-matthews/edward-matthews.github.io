@@ -12,7 +12,11 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
     return (
         <Table borderless hover>
             <tbody>
-                <tr onClick={() => setDisplayContactForm(true)} style={{ textDecorationColor: 'red' }}>
+                <tr
+                    onClick={() => setDisplayContactForm(true)}
+                    style={{ textDecorationColor: 'red' }}
+                    className="unusual-link"
+                >
                     <td>
                         <i className="bi bi-envelope-fill"></i>
                     </td>
@@ -23,6 +27,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                 <tr
                     onClick={() => handleClick('https://github.com/edward-matthews')}
                     style={{ textDecorationColor: '#24292e' }}
+                    className="unusual-link"
                 >
                     <td>
                         <i className="bi bi-github"></i>
@@ -33,6 +38,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                 <tr
                     onClick={() => handleClick('https://www.google.com/search?q=linkedin')}
                     style={{ textDecorationColor: '#2867B2' }}
+                    className="unusual-link"
                 >
                     <td>
                         <i className="bi bi-linkedin"></i>

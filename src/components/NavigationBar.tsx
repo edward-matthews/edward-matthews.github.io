@@ -9,6 +9,7 @@ import ContactModal from './ContactModal';
 const NavigationBar: React.FC = () => {
     const [expanded, setExpanded] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    const [contactStyle, setContactStyle] = useState(false);
 
     return (
         <>
@@ -39,8 +40,25 @@ const NavigationBar: React.FC = () => {
                             <Nav.Link as={NavLink} to="/articles" onClick={() => setExpanded(false)} className="mx-5">
                                 <i className="bi bi-pen"> Articles</i>
                             </Nav.Link>
-                            <Navbar.Text onClick={() => [setExpanded(false), setModalOpen(true)]} className="mx-5">
-                                <i className="bi bi-chat-text"> Contact</i>
+                            <Navbar.Text
+                                onClick={() => [setExpanded(false), setModalOpen(true)]}
+                                onMouseEnter={() => setContactStyle(true)}
+                                onMouseLeave={() => setContactStyle(false)}
+                                className="mx-5"
+                            >
+                                {contactStyle ? (
+                                    <i
+                                        className="bi bi-chat-text unusual-link"
+                                        style={{
+                                            background: 'black',
+                                        }}
+                                    >
+                                        {' '}
+                                        Contact
+                                    </i>
+                                ) : (
+                                    <i className="bi bi-chat-text unusual-link"> Contact</i>
+                                )}
                             </Navbar.Text>
                         </Nav>
                     </Navbar.Collapse>

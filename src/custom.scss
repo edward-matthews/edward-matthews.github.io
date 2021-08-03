@@ -17,12 +17,10 @@ $body-color: #333;
 // $container-max-widths: ( sm: 270px, md: 360px, lg: 480px, xl: 570px, xxl: 670px);
 tr {
     font-size: 2em;
-    cursor: pointer;
 }
 
 .bi-arrow-return-left {
     font-size: 2em;
-    cursor: pointer
 }
 
 .bi-code .bi-code-slash {
@@ -32,6 +30,10 @@ tr {
 tr:hover {
     text-decoration: underline solid 0.15em;
     background-color: rgba($light, .1);
+}
+
+.unusual-link {
+    cursor: pointer
 }
 
 @keyframes navbarAnimate {
