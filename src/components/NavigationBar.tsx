@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import ContactModal from './ContactModal';
 
 const NavigationBar: React.FC = () => {
