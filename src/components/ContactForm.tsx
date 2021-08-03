@@ -14,6 +14,7 @@ const ContactForm: React.FC<Props> = ({ setDisplayContactForm, setResponse }: Pr
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const [email, setEmail] = useState('');
+    const [displayLeaving, setDisplayLeaving] = useState(false);
 
     async function handleFormSubmit() {
         const contactFormRequestHref =
@@ -46,7 +47,14 @@ const ContactForm: React.FC<Props> = ({ setDisplayContactForm, setResponse }: Pr
                     <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} />
                 </FloatingLabel>
             </Form.Group>
-            <i className="bi bi-arrow-return-left"></i>
+            <span
+                onClick={() => setDisplayContactForm(false)}
+                onMouseEnter={() => setDisplayLeaving(true)}
+                onMouseLeave={() => setDisplayLeaving(false)}
+            >
+                <i className="bi bi-arrow-return-left"></i>
+            </span>
+            {displayLeaving && <span> Won&apos;t you at least say &quot;Hi&quot;?</span>}
             <Button
                 variant="primary"
                 className="float-end"

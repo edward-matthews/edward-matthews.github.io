@@ -12,11 +12,9 @@ $navbar-dark-hover-color: rgba($light, .75) !default;
 $navbar-dark-active-color: $light !default;
 $navbar-dark-brand-color: $secondary !default;
 $navbar-dark-brand-hover-color: $secondary !default;
+$body-bg: #DDD;
+$body-color: #333;
 // $container-max-widths: ( sm: 270px, md: 360px, lg: 480px, xl: 570px, xxl: 670px);
-body {
-    padding-top: 70px;
-}
-
 tr {
     font-size: 2em;
     cursor: pointer;
@@ -24,11 +22,34 @@ tr {
 
 .bi-arrow-return-left {
     font-size: 2em;
+    cursor: pointer
+}
+
+.bi-code .bi-code-slash {
+    font-size: 2em;
 }
 
 tr:hover {
     text-decoration: underline solid 0.15em;
     background-color: rgba($light, .1);
+}
+
+@keyframes navbarAnimate {
+    0%,
+    85%,
+    100% {
+        transform: rotate(0deg);
+    }
+    90% {
+        transform: rotate(5deg);
+    }
+    95% {
+        transform: rotate(-5deg);
+    }
+}
+
+.navbar .active {
+    animation: navbarAnimate 2s linear 0s infinite normal;
 }
 
 // Import Bootstrap and its default variables

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -19,28 +19,30 @@ const NavigationBar: React.FC = () => {
                 expand="lg"
                 bg="primary"
                 variant="dark"
-                fixed="top"
+                sticky="top"
                 className="mb-2"
             >
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         Edward Matthews
                     </Navbar.Brand>
-                    <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="responsive-navbar-nav" />
+                    <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="responsive-navbar-nav ">
+                        {expanded ? <i className="bi bi-code-slash"></i> : <i className="bi bi-code"></i>}
+                    </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav>
-                            <Nav.Link as={Link} to="/about" onClick={() => setExpanded(false)}>
-                                About
+                        <Nav className="ms-auto">
+                            <Nav.Link as={NavLink} to="/about" onClick={() => setExpanded(false)} className="mx-5">
+                                <i className="bi bi-person-square"> About</i>
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/portfolio" onClick={() => setExpanded(false)}>
-                                Portfolio
+                            <Nav.Link as={NavLink} to="/portfolio" onClick={() => setExpanded(false)} className="mx-5">
+                                <i className="bi bi-journal-code"> Portfolio</i>
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/articles" onClick={() => setExpanded(false)}>
-                                Articles
+                            <Nav.Link as={NavLink} to="/articles" onClick={() => setExpanded(false)} className="mx-5">
+                                <i className="bi bi-pen"> Articles</i>
                             </Nav.Link>
-                            <Button variant="secondary" onClick={() => [setExpanded(false), setModalOpen(true)]}>
-                                Contact
-                            </Button>
+                            <Navbar.Text onClick={() => [setExpanded(false), setModalOpen(true)]} className="mx-5">
+                                <i className="bi bi-chat-text"> Contact</i>
+                            </Navbar.Text>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
