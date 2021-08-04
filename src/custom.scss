@@ -14,7 +14,16 @@ $navbar-dark-brand-color: $secondary !default;
 $navbar-dark-brand-hover-color: $secondary !default;
 $body-bg: #DDD;
 $body-color: #333;
-// $container-max-widths: ( sm: 270px, md: 360px, lg: 480px, xl: 570px, xxl: 670px);
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+.navbar-brand {
+    font-size: x-large;
+}
+
+html {
+    width: 100vw;
+}
+
 tr {
     font-size: 2em;
 }
@@ -28,7 +37,7 @@ tr {
 }
 
 tr:hover {
-    text-decoration: underline solid 0.15em;
+    text-decoration: underline solid 0.1em;
     background-color: rgba($light, .1);
 }
 
@@ -54,5 +63,14 @@ tr:hover {
     animation: navbarAnimate 2s linear 0s infinite normal;
 }
 
-// Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+.portfolioCard {
+    transition: transform .2s;
+}
+
+.portfolioCard:hover {
+    transform: scale(1.1);
+}
+
+#contentDiv {
+    max-width: 960px;
+}

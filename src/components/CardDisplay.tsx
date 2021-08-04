@@ -3,9 +3,11 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { Octokit } from 'octokit';
 import moment from 'moment';
+import { ButtonToolbar } from 'react-bootstrap';
 
 const octokit = new Octokit({
     auth: process.env.REACT_APP_ACCESS_TOKEN,
@@ -25,7 +27,13 @@ function withinDays(date: string, period: number): boolean {
 const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
     return (
         <Col>
-            <Card bg="dark" text="light" style={{ width: '18rem' }} className="mt-2 mx-auto g-2 h-100" border="dark">
+            <Card
+                bg="dark"
+                text="light"
+                style={{ width: '18rem' }}
+                className="mt-2 mx-auto g-2 h-100 portfolioCard"
+                border="dark"
+            >
                 <Card.Header style={{ height: '2.5rem' }}>
                     {withinDays(repo.created_at, 14) && (
                         <span>
@@ -43,11 +51,17 @@ const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
 
                 <Card.Body className="d-flex flex-column">
                     <Card.Title>{repo.name}</Card.Title>
-                    <Card.Img src="https://via.placeholder.com/150" />
                     <Card.Text>{repo.description}</Card.Text>
-                    <Button href={repo.html_url} variant="light" className="mt-auto">
-                        View Code
-                    </Button>
+                    <ButtonToolbar className="mt-auto">
+                        {repo.homepage && (
+                            <Button href={repo.homepage} variant="light" className="mx-auto">
+                                View Live
+                            </Button>
+                        )}
+                        <Button href={repo.html_url} variant="light" className="mx-auto">
+                            View on GitHub
+                        </Button>
+                    </ButtonToolbar>
                 </Card.Body>
 
                 <Card.Footer className="text-muted text-end small">

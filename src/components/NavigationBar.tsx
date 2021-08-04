@@ -9,7 +9,6 @@ import ContactModal from './ContactModal';
 const NavigationBar: React.FC = () => {
     const [expanded, setExpanded] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    const [contactStyle, setContactStyle] = useState(false);
 
     return (
         <>
@@ -20,46 +19,44 @@ const NavigationBar: React.FC = () => {
                 bg="primary"
                 variant="dark"
                 sticky="top"
-                className="mb-2"
+                className="mb-2 py-4"
             >
                 <Container>
-                    <Navbar.Brand as={Link} to="/">
+                    <Navbar.Brand as={Link} to="/" className="py-4">
                         Edward Matthews
                     </Navbar.Brand>
-                    <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="responsive-navbar-nav ">
+                    <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="responsive-navbar-nav">
                         {expanded ? <i className="bi bi-code-slash"></i> : <i className="bi bi-code"></i>}
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={NavLink} to="/about" onClick={() => setExpanded(false)} className="mx-5">
+                            <Nav.Link as={NavLink} to="/about" onClick={() => setExpanded(false)} className="mx-5 h4">
                                 <i className="bi bi-person-square"> About</i>
                             </Nav.Link>
-                            <Nav.Link as={NavLink} to="/portfolio" onClick={() => setExpanded(false)} className="mx-5">
+                            <Nav.Link
+                                as={NavLink}
+                                to="/portfolio"
+                                onClick={() => setExpanded(false)}
+                                className="mx-5 h4"
+                            >
                                 <i className="bi bi-journal-code"> Portfolio</i>
                             </Nav.Link>
-                            <Nav.Link as={NavLink} to="/articles" onClick={() => setExpanded(false)} className="mx-5">
+                            <Nav.Link
+                                as={NavLink}
+                                to="/articles"
+                                onClick={() => setExpanded(false)}
+                                className="mx-5 h4"
+                            >
                                 <i className="bi bi-pen"> Articles</i>
                             </Nav.Link>
-                            <Navbar.Text
+                            <Nav.Link
+                                as={Link}
+                                to="#"
                                 onClick={() => [setExpanded(false), setModalOpen(true)]}
-                                onMouseEnter={() => setContactStyle(true)}
-                                onMouseLeave={() => setContactStyle(false)}
-                                className="mx-5"
+                                className="mx-5 me-auto"
                             >
-                                {contactStyle ? (
-                                    <i
-                                        className="bi bi-chat-text unusual-link"
-                                        style={{
-                                            background: 'black',
-                                        }}
-                                    >
-                                        {' '}
-                                        Contact
-                                    </i>
-                                ) : (
-                                    <i className="bi bi-chat-text unusual-link"> Contact</i>
-                                )}
-                            </Navbar.Text>
+                                <i className="bi bi-chat-text h4"> Contact</i>
+                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

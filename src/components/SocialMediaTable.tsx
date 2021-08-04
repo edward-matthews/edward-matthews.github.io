@@ -20,9 +20,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                     <td>
                         <i className="bi bi-envelope-fill"></i>
                     </td>
-                    <td className="willItHover">
-                        {response.length > 0 ? <span>{response}</span> : <span>Email</span>}
-                    </td>
+                    <td>{response.length > 0 ? <span>{response}</span> : <span>Message</span>}</td>
                 </tr>
                 <tr
                     onClick={() => handleClick('https://github.com/edward-matthews')}
@@ -45,6 +43,28 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                     </td>
 
                     <td>LinkedIn</td>
+                </tr>
+                <tr
+                    onClick={() => handleClick('https://www.google.com/search?q=twitter')}
+                    style={{ textDecorationColor: '#00acee' }}
+                    className="unusual-link"
+                >
+                    <td>
+                        <i className="bi bi-twitter"></i>
+                    </td>
+
+                    <td>Twitter</td>
+                </tr>
+                <tr
+                    onClick={() => handleClick('https://www.google.com/search?q=youtube')}
+                    style={{ textDecorationColor: '#c4302b' }}
+                    className="unusual-link"
+                >
+                    <td>
+                        <i className="bi bi-youtube"></i>
+                    </td>
+
+                    <td>YouTube</td>
                 </tr>
             </tbody>
         </Table>

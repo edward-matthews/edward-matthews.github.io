@@ -1,13 +1,17 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import CardDisplay from '../components/CardDisplay';
-import CardGroup from 'react-bootstrap/CardGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
+
 import { Octokit } from 'octokit';
 import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 
 const Portfolio: React.FC = () => {
+    const [projectsAcquired, setProjectsAcquired] = useState(false);
     const octokit = new Octokit({
         userAgent: 'edward-matthews.github.io v1.0.0',
     });
@@ -23,7 +27,11 @@ const Portfolio: React.FC = () => {
                     promises.push(octokit.rest.repos.get({ owner: 'edward-matthews', repo: repository.name })),
                 ),
             )
-            .then(() => Promise.all(promises).then((res) => setRepositories(res)))
+            .then(() =>
+                Promise.all(promises)
+                    .then((res) => setRepositories(res))
+                    .then(() => setProjectsAcquired(true)),
+            )
             .catch((err) => console.log(err));
     }, []);
     const languages = repositories.map((repo) => repo.data.language).filter((x): x is string => x !== null);
@@ -44,13 +52,22 @@ const Portfolio: React.FC = () => {
                     ))}
                 </Form.Select>
             </FloatingLabel>
-            <CardGroup>
-                {repositories.map((repo) => {
-                    return languageSelect === repo.data.language || languageSelect === 'all' ? (
-                        <CardDisplay {...repo.data} key={repo.data.id} />
-                    ) : null;
-                })}
-            </CardGroup>
+            {projectsAcquired ? (
+                <Row xs={1} md={2} lg={3} className="g-0 align-items-stretch d-flex">
+                    {repositories.map((repo) => {
+                        console.log(repo);
+                        return languageSelect === repo.data.language || languageSelect === 'all' ? (
+                            <Col key={repo.data.id} className="my-2 g-2 align-items-stretch d-flex">
+                                <CardDisplay {...repo.data} />{' '}
+                            </Col>
+                        ) : null;
+                    })}
+                </Row>
+            ) : (
+                <Spinner animation="border" role="status" className="d-flex mx-auto mt-2">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            )}
         </>
     );
 };

@@ -10,7 +10,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
     return (
         <>
             <NavigationBar />
-            <Container>{children}</Container>
+            <Container id="contentDiv">{children}</Container>
         </>
     );
 };
