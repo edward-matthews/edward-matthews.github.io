@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ContactForm from './ContactForm';
 import SocialMediaTable from './SocialMediaTable';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 interface Props {
     modalOpen: boolean;

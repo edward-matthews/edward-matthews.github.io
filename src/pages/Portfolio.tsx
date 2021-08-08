@@ -34,7 +34,9 @@ const Portfolio: React.FC = () => {
             )
             .catch((err) => console.log(err));
     }, []);
-    const languages = repositories.map((repo) => repo.data.language).filter((x): x is string => x !== null);
+    const languages = Array.from(
+        new Set(repositories.map((repo) => repo.data.language).filter((x): x is string => x !== null)),
+    );
     const [languageSelect, setLanguageSelect] = useState<string>('all');
     function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
         setLanguageSelect(e.target.value);

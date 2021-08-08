@@ -1,19 +1,42 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
+import moment from 'moment';
 
 const Articles: React.FC = () => {
+    type ArticleT = {
+        author: string;
+        categories: string[];
+        content: string;
+        description: string;
+        enclosure: Record<string, unknown>;
+        guid: string;
+        link: string;
+        pubDate: string;
+        thumbnail: string;
+        title: string;
+    };
+    const [articles, setArticles] = useState<ArticleT[]>([]);
+
+    useEffect(() => {
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@edward-matthews')
+            .then((resp) => resp.json())
+            .then((blogs) => setArticles(blogs.items));
+    }, []);
+
     return (
-        <Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-            </Accordion.Item>
+        <Accordion defaultActiveKey="0" flush>
+            {articles.map((article, idx) => {
+                return (
+                    <Accordion.Item key={idx} eventKey={String(idx)}>
+                        <Accordion.Header>
+                            <span className="me-auto">{article.title}</span>
+                            <small className="ms-auto">{moment(article.pubDate).format('dddd, MMMM Do YYYY')}</small>
+                        </Accordion.Header>
+                        <Accordion.Body dangerouslySetInnerHTML={{ __html: article.description }}></Accordion.Body>
+                    </Accordion.Item>
+                );
+            })}
         </Accordion>
     );
 };
