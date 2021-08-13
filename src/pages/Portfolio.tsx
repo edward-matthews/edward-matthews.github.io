@@ -13,7 +13,7 @@ import { GetResponseTypeFromEndpointMethod } from '@octokit/types';
 const Portfolio: React.FC = () => {
     const [projectsAcquired, setProjectsAcquired] = useState(false);
     const octokit = new Octokit({
-        userAgent: 'edward-matthews.github.io v1.0.0',
+        userAgent: 'edwardmatthe.ws v1.0.0',
     });
     type GetRepositoryResponseType = GetResponseTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
     const [repositories, setRepositories] = useState<GetRepositoryResponseType[]>([]);
@@ -57,7 +57,6 @@ const Portfolio: React.FC = () => {
             {projectsAcquired ? (
                 <Row xs={1} md={2} lg={3} className="g-0 align-items-stretch d-flex">
                     {repositories.map((repo) => {
-                        console.log(repo);
                         return languageSelect === repo.data.language || languageSelect === 'all' ? (
                             <Col key={repo.data.id} className="my-2 g-2 align-items-stretch d-flex">
                                 <CardDisplay {...repo.data} />{' '}

@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import Image from 'react-bootstrap/Image';
 
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { Octokit } from 'octokit';
@@ -11,7 +12,7 @@ import { ButtonToolbar } from 'react-bootstrap';
 
 const octokit = new Octokit({
     auth: process.env.REACT_APP_ACCESS_TOKEN,
-    userAgent: 'edward-matthews.github.io v1.0.0',
+    userAgent: 'edwardmatthe.ws v1.0.0',
 });
 type GetRepositoryResponseType = GetResponseDataTypeFromEndpointMethod<typeof octokit.rest.repos.get>;
 
@@ -24,7 +25,16 @@ function withinDays(date: string, period: number): boolean {
     return duration < week;
 }
 
+const languageIconMap = new Map([
+    ['Python', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg'],
+    [
+        'TypeScript',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1920px-Typescript_logo_2020.svg.png',
+    ],
+]);
+
 const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
+    console.log(repo.language);
     return (
         <Col>
             <Card
@@ -46,6 +56,14 @@ const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
                         <Badge pill bg="warning">
                             Updated Recently!
                         </Badge>
+                    )}
+                    {repo.language && (
+                        <Image
+                            src={languageIconMap.get(repo.language)}
+                            width="32px"
+                            style={{ float: 'right' }}
+                            rounded
+                        />
                     )}
                 </Card.Header>
 
