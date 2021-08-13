@@ -45,7 +45,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                     <td>LinkedIn</td>
                 </tr>
                 <tr
-                    onClick={() => handleClick('https://www.google.com/search?q=twitter')}
+                    onClick={() => handleClick('https://twitter.com/matthewsedwardj')}
                     style={{ textDecorationColor: '#00acee' }}
                     className="unusual-link"
                 >
