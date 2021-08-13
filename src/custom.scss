@@ -110,6 +110,9 @@ tr:hover {
     border: 1px solid rgba(55, 55, 55, 0.5);
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
     line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .floating-label {
@@ -127,13 +130,13 @@ tr:hover {
     font-family: 'Comfortaa';
 }
 
-.floating-moving-button:hover {
-    animation: floatingButtonAnimate 1s linear 0s infinite normal;
-}
-
+// .floating-moving-button:hover {
+//     animation: floatingButtonAnimate 1s linear 0s infinite normal;
+// }
 .bi {
-    display: inline-block;
+    display: flex;
     font-size: 2rem;
-    font-family: none;
     color: $dark;
+    margin: 0;
+    padding: 0;
 }
