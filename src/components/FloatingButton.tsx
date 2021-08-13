@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import ContactModal from './ContactModal';
+
+import FloatingItems from './FloatingItems';
 
 const FloatingButton: React.FC = () => {
-    const [modalOpen, setModalOpen] = useState(false);
+    const [expanded, setExpanded] = useState(false);
+
     return (
-        <>
-            <button className="floating-menu" onClick={() => setModalOpen(true)}>
-                <i className="bi bi-chat-text h4" />
+        <div className={`floating-options ${expanded && 'open'}`}>
+            <button className="floating-button" onClick={() => setExpanded(!expanded)}>
+                {expanded ? <i className="bi bi-dash" /> : <i className="bi bi-plus" />}
             </button>
-            <ContactModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
-        </>
+            {expanded && <FloatingItems />}
+        </div>
     );
 };
 

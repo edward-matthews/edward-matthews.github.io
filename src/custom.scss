@@ -24,6 +24,7 @@ $body-color: #333;
 }
 
 html {
+    overflow-y: scroll;
     width: 100vw;
 }
 
@@ -82,20 +83,56 @@ tr:hover {
     max-width: 960px;
 }
 
-.floating-menu {
+@keyframes floatingButtonAnimate {
+    0%,
+    40% {
+        transform: rotate(0deg)
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    60% {
+        transform: rotate(10deg);
+    }
+    70% {
+        transform: rotate(0deg);
+    }
+}
+
+.floating-button {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    width: 55px;
-    height: 55px;
+    width: 48px;
+    height: 48px;
     background: $secondary;
     border-radius: 50%;
-    border: none;
+    border: 1px solid rgba(55, 55, 55, 0.5);
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
-    text-align: center;
+    line-height: 1;
 }
 
-.bi-chat-text {
-    font-size: 35px;
+.floating-label {
+    position: fixed;
+    right: 80px;
+    width: 96px;
+    height: 36px;
+    background: $light;
+    border: none;
+    border-radius: 5%;
+    border-top: 3px solid rgba(55, 55, 55, 0.5);
+    border-left: 3px solid rgba(55, 55, 55, 0.5);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
+    color: $dark;
+    font-family: 'Comfortaa';
+}
+
+.floating-moving-button:hover {
+    animation: floatingButtonAnimate 1s linear 0s infinite normal;
+}
+
+.bi {
+    font-size: 2rem;
+    font-family: none;
     color: $dark;
 }
