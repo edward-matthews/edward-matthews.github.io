@@ -17,7 +17,7 @@ const FloatingButton: React.FC = () => {
                     <i className="bi bi-plus" style={{ bottom: '0px' }} />
                 )}
             </button>
-            {expanded && <FloatingItems />}
+            {expanded && <FloatingItems expand={setExpanded} />}
         </>
     );
 };
