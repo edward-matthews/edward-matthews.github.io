@@ -11,7 +11,11 @@ const FloatingButton: React.FC = () => {
     return (
         <>
             <button className="floating-button" onClick={() => setExpanded(!expanded)}>
-                {expanded ? <i className="bi bi-dash" /> : <i className="bi bi-plus" />}
+                {expanded ? (
+                    <i className="bi bi-dash" style={{ bottom: '0px' }} />
+                ) : (
+                    <i className="bi bi-plus" style={{ bottom: '0px' }} />
+                )}
             </button>
             {expanded && <FloatingItems />}
         </>
