@@ -43,7 +43,7 @@ const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
                 className="mt-2 mx-auto g-2 h-100 portfolioCard"
                 border="dark"
             >
-                <Card.Header style={{ height: '2.5rem' }}>
+                <Card.Header style={{ height: '2.5rem', position: 'relative' }}>
                     {withinDays(repo.created_at, 14) && (
                         <span>
                             <Badge pill bg="danger">
@@ -60,7 +60,7 @@ const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
                         <Image
                             src={languageIconMap.get(repo.language)}
                             width="32px"
-                            style={{ float: 'right' }}
+                            style={{ float: 'right', position: 'relative', top: '50%', transform: 'translateY(-50%)' }}
                             rounded
                         />
                     )}
