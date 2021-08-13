@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import FloatingItems from './FloatingItems';
 
 const FloatingButton: React.FC = () => {
     const [expanded, setExpanded] = useState(false);
+    useEffect(() => {
+        window.addEventListener('scroll', () => setExpanded(false), { passive: true });
+    }, []);
 
     return (
         <>
