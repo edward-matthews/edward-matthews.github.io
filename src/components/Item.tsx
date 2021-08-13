@@ -23,7 +23,7 @@ const Item: React.FC<Props> = ({ icon, clickHandler, pos, label }: Props) => {
                 onClick={() => clickHandler()}
                 style={{ bottom: `calc(20px + ${pos} * 60px)` }}
             >
-                <i className={`bi ${icon}`} />
+                <i className={`bi ${icon} mx-auto`} />
             </button>
         </div>
     );
