@@ -34,7 +34,6 @@ const languageIconMap = new Map([
 ]);
 
 const CardDisplay: React.FC<GetRepositoryResponseType> = (repo) => {
-    console.log(repo.language);
     return (
         <Col>
             <Card
