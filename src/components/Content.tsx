@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Portfolio from '../pages/Portfolio';
 import Unknown from '../pages/Unknown';
 import Articles from '../pages/Articles';
+import Post from '../pages/Post';
 
 const Content: React.FC = () => {
     return (
@@ -13,6 +14,9 @@ const Content: React.FC = () => {
             </Route>
             <Route path="/portfolio">
                 <Portfolio />
+            </Route>
+            <Route path="/articles/:slug">
+                <Post />
             </Route>
             <Route path="/articles">
                 <Articles />
