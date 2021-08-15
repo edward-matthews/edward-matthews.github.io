@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import matter from 'gray-matter';
 
 import Markdown from '../components/Markdown';
+import MetaTags from '../components/MetaTags';
 import Unknown from './Unknown';
 
 type PostParams = {
@@ -15,7 +16,7 @@ interface Frontmatter {
     thumbnail: string;
     banner: string;
     seoTitle: string;
-    abstract: string;
+    description: string;
     isPublished: boolean;
     publishedOn: string;
 }
@@ -35,10 +36,18 @@ const Post: React.FC = () => {
     }, []);
     return (
         <>
+            {postFrontmatter && postFrontmatter.isPublished && (
+                <MetaTags
+                    title={postFrontmatter.seoTitle}
+                    description={postFrontmatter.description}
+                    thumbnail={postFrontmatter.thumbnail}
+                    url={`/articles/${slug}`}
+                />
+            )}
             {postFrontmatter && postFrontmatter.isPublished ? (
-                <div className="content">
-                    <h1 className="mx-auto">{postFrontmatter.title}</h1>
-                    <small className="ms-auto">{postFrontmatter.publishedOn}</small>
+                <div>
+                    <h1>{postFrontmatter.title}</h1>
+                    <small>{postFrontmatter.publishedOn}</small>
                     <img src={postFrontmatter.banner} width="100%" />
                     <Markdown>{postContent}</Markdown>
                 </div>

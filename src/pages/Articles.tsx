@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
+import MetaTags from '../components/MetaTags';
 
 const Articles: React.FC = () => {
     type ArticleT = {
@@ -28,6 +29,12 @@ const Articles: React.FC = () => {
 
     return (
         <>
+            <MetaTags
+                title="Articles"
+                description="All of my writings, primarily about Django and React, links to edit any article on GitHub if you find a mistakae (oops!)."
+                thumbnail=""
+                url="/articles"
+            />
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0" flush>
                     {articles.map((article, idx) => {
