@@ -130,9 +130,10 @@ tr:hover {
     font-family: 'Comfortaa';
 }
 
-// .floating-moving-button:hover {
-//     animation: floatingButtonAnimate 1s linear 0s infinite normal;
-// }
+.floating-moving-button:hover {
+    animation: floatingButtonAnimate 1s linear 0s infinite normal;
+}
+
 .bi {
     display: flex;
     font-size: 2rem;
