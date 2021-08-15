@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router';
 import { useParams } from 'react-router-dom';
 
 import matter from 'gray-matter';
 
 import Markdown from '../components/Markdown';
 import MetaTags from '../components/MetaTags';
-import Unknown from './Unknown';
 
 type PostParams = {
     slug: string;
@@ -44,16 +44,15 @@ const Post: React.FC = () => {
                     url={`/articles/${slug}`}
                 />
             )}
-            {postFrontmatter && postFrontmatter.isPublished ? (
+            {postFrontmatter && postFrontmatter.isPublished && (
                 <div>
                     <h1>{postFrontmatter.title}</h1>
                     <small>{postFrontmatter.publishedOn}</small>
                     <img src={postFrontmatter.banner} width="100%" />
                     <Markdown>{postContent}</Markdown>
                 </div>
-            ) : (
-                <Unknown />
             )}
+            {!postContent && <Redirect push to="/404" />}
         </>
     );
 };
