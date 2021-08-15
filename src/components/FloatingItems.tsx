@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import ContactModal from './ContactModal';
+import React from 'react';
+
 import Item from './Item';
 import { useHistory } from 'react-router-dom';
 
 interface Props {
     expand: (val: boolean) => void;
+    modalControl: (val: boolean) => void;
 }
 
-const FloatingItems: React.FC<Props> = ({ expand }: Props) => {
+const FloatingItems: React.FC<Props> = ({ expand, modalControl }: Props) => {
     const history = useHistory();
     const handleLink = (href: string) => {
         return () => {
             history.push(href);
         };
     };
-    const [modalOpen, setModalOpen] = useState(false);
-    const openModal = () => setModalOpen(true);
+
+    const openModal = () => modalControl(true);
 
     return (
         <>
@@ -29,7 +30,6 @@ const FloatingItems: React.FC<Props> = ({ expand }: Props) => {
                 expand={expand}
             />
             <Item icon="bi-house" clickHandler={handleLink('/')} pos={4} label="Home" expand={expand} />
-            <ContactModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
     );
 };
