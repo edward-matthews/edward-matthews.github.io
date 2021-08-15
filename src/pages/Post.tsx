@@ -25,6 +25,7 @@ const Post: React.FC = () => {
     const { slug } = useParams<PostParams>();
     const [postContent, setPostContent] = useState('');
     const [postFrontmatter, setPostFrontmatter] = useState<Frontmatter>();
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         import(`../posts/${slug}.md`)
@@ -32,10 +33,11 @@ const Post: React.FC = () => {
             .then((response) => response.text())
             .then((text) => matter(text))
             .then((gm) => [setPostContent(gm.content), setPostFrontmatter(gm.data as Frontmatter)])
-            .catch(() => console.error(`No post found with id ${slug}.`));
+            .catch(() => setHasError(true));
     }, []);
     return (
         <>
+            {hasError && <Redirect to="/404" />}
             {postFrontmatter && postFrontmatter.isPublished && (
                 <MetaTags
                     title={postFrontmatter.seoTitle}
@@ -52,7 +54,6 @@ const Post: React.FC = () => {
                     <Markdown>{postContent}</Markdown>
                 </div>
             )}
-            {!postContent && <Redirect push to="/404" />}
         </>
     );
 };
