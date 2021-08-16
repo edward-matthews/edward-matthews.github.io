@@ -28,7 +28,7 @@ const Post: React.FC = () => {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        import(/* webpackMode: "eager" */ `../posts/${slug}.md`)
+        import(`../posts/${slug}.md`)
             .then((post) => fetch(post.default))
             .then((response) => response.text())
             .then((text) => matter(text))
@@ -37,7 +37,7 @@ const Post: React.FC = () => {
     }, []);
     return (
         <>
-            {/* {hasError && <Redirect to="/404" />} */}
+            {hasError && <Redirect to="/404" />}
             {postFrontmatter && postFrontmatter.isPublished && (
                 <MetaTags
                     title={postFrontmatter.seoTitle}
