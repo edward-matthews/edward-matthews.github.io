@@ -1,6 +1,6 @@
 {
     "name": "edward-matthews.github.io",
-    "homepage": "https://edwardmatthe.ws",
+    "homepage": "https://edwardmatthe.ws/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -35,7 +35,7 @@
     "scripts": {
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
         "start": "react-scripts start",
-        "predeploy": "npm run build",
+        "predeploy": "npm run build && touch .nojekyll",
         "deploy": "gh-pages -d build",
         "build": "react-scripts build",
         "test": "react-scripts test",
