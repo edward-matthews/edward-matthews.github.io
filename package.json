@@ -35,8 +35,9 @@
     "scripts": {
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
         "start": "react-scripts start",
-        "predeploy": "npm run build && touch build/.nojekyll",
+        "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
+        "postdeploy": "touch build/.nojekyll && git add . && git commit -m 's'",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
