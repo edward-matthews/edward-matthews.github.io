@@ -12,9 +12,7 @@ interface Frontmatter {
     slug: string;
     thumbnail: string;
     banner: string;
-    seoTitle: string;
     description: string;
-    isPublished: boolean;
     publishedOn: string;
 }
 

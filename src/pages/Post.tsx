@@ -17,9 +17,7 @@ interface Frontmatter {
     slug: string;
     thumbnail: string;
     banner: string;
-    seoTitle: string;
     description: string;
-    isPublished: boolean;
     publishedOn: string;
 }
 
@@ -41,15 +39,15 @@ const Post: React.FC = () => {
     return (
         <>
             {hasError && <Redirect to="/404" />}
-            {postFrontmatter && postFrontmatter.isPublished && (
+            {postFrontmatter && (
                 <MetaTags
-                    title={postFrontmatter.seoTitle}
+                    title={postFrontmatter.title}
                     description={postFrontmatter.description}
                     thumbnail={postFrontmatter.thumbnail}
                     url={`/articles/${slug}`}
                 />
             )}
-            {postFrontmatter && postFrontmatter.isPublished && (
+            {postFrontmatter && (
                 <div>
                     <h1>{postFrontmatter.title}</h1>
                     <small>
