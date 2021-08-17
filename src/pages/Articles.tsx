@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
 import MetaTags from '../components/MetaTags';
+import Post from './Post';
 
 const Articles: React.FC = () => {
     type ArticleT = {
@@ -18,13 +19,15 @@ const Articles: React.FC = () => {
         thumbnail: string;
         title: string;
     };
-    const [articles, setArticles] = useState<ArticleT[]>([]);
+    function importAll(r: __WebpackModuleApi.RequireContext) {
+        return r.keys();
+    }
+
+    const [articles, setArticles] = useState<string[]>([]);
     const [articlesLoaded, setArticlesLoaded] = useState(false);
     useEffect(() => {
-        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@edward-matthews')
-            .then((resp) => resp.json())
-            .then((blogs) => setArticles(blogs.items))
-            .then(() => setArticlesLoaded(true));
+        setArticles(importAll(require.context('../posts/', false, /\.(md)$/)));
+        setArticlesLoaded(true);
     }, []);
 
     return (
@@ -35,7 +38,10 @@ const Articles: React.FC = () => {
                 thumbnail=""
                 url="/articles"
             />
-            {articlesLoaded ? (
+            {articles.map((postSlug, idx) => {
+                return <Post key={idx} slug={postSlug.slice(2, -3)} preview={true} />;
+            })}
+            {/* {articlesLoaded ? (
                 <Accordion defaultActiveKey="0" flush>
                     {articles.map((article, idx) => {
                         return (
@@ -57,7 +63,7 @@ const Articles: React.FC = () => {
                 <Spinner animation="border" role="status" className="d-flex mx-auto mt-2">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
-            )}
+            )} */}
         </>
     );
 };
