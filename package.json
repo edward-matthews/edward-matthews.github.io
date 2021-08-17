@@ -37,7 +37,7 @@
         "start": "react-scripts start",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "postdeploy": "git checkout gh-pages && touch build/.nojekyll && git add . && git commit -m 'Maintain nojekyll' && git push",
+        "postdeploy": "touch .nojekyll && git add . && git commit -m 'maintain' && git push origin main:gh-pages",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
