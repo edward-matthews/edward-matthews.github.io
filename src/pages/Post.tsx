@@ -59,7 +59,10 @@ const Post: React.FC = () => {
                             className="externalLink"
                             href={`https://github.com/edward-matthews/edward-matthews.github.io/edit/main/src/posts/${slug}.md`}
                         >
-                            Edit on GitHub
+                            <i style={{ fontSize: '14px', display: 'inline' }} className="bi bi-github">
+                                {' '}
+                                Edit on GitHub
+                            </i>
                         </a>
                     </small>
                     <img src={postFrontmatter.banner} width="100%" />
