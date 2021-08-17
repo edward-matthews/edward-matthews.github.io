@@ -53,7 +53,7 @@ const Articles: React.FC = () => {
                             <Accordion.Item key={idx} eventKey={String(idx)}>
                                 <Accordion.Header>
                                     <span className="me-auto">{fm.title}</span>
-                                    <small className="ms-auto">{moment(fm.publishedOn).format('MMMM Do YYYY')}</small>
+                                    <small className="ms-auto">{moment(fm.publishedOn).format('MMMM Do, YYYY')}</small>
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     {fm.description}

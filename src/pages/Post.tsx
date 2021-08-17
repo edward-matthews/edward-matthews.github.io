@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 import { useParams } from 'react-router-dom';
+import moment from 'moment';
 
 import matter from 'gray-matter';
 
@@ -51,7 +52,16 @@ const Post: React.FC = () => {
             {postFrontmatter && postFrontmatter.isPublished && (
                 <div>
                     <h1>{postFrontmatter.title}</h1>
-                    <small>{postFrontmatter.publishedOn}</small>
+                    <small>
+                        {moment(postFrontmatter.publishedOn).format('MMMM Do, YYYY')}
+
+                        <a
+                            className="externalLink"
+                            href={`https://github.com/edward-matthews/edward-matthews.github.io/edit/main/src/posts/${slug}.md`}
+                        >
+                            Edit on GitHub
+                        </a>
+                    </small>
                     <img src={postFrontmatter.banner} width="100%" />
                     <Markdown>{postContent}</Markdown>
                 </div>
