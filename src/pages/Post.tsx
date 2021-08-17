@@ -13,6 +13,7 @@ type PostParams = {
 
 interface Frontmatter {
     title: string;
+    slug: string;
     thumbnail: string;
     banner: string;
     seoTitle: string;
@@ -21,16 +22,8 @@ interface Frontmatter {
     publishedOn: string;
 }
 
-interface Props {
-    slug?: string;
-    preview?: boolean;
-}
-
-const Post: React.FC<Props> = (props: Props) => {
-    let slug = props.slug;
-    if (slug === undefined) {
-        slug = useParams<PostParams>().slug;
-    }
+const Post: React.FC = () => {
+    const slug = useParams<PostParams>().slug;
 
     const [postContent, setPostContent] = useState('');
     const [postFrontmatter, setPostFrontmatter] = useState<Frontmatter>();

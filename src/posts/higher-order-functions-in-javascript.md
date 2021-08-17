@@ -1,5 +1,6 @@
 ---
 title: Higher-Order Functions in JavaScript
+slug: higher-order-functions-in-javascript
 banner: https://cdn-images-1.medium.com/max/1800/0*YKjms-x23HKyhXLW
 thumbnail: https://cdn-images-1.medium.com/max/1800/0*YKjms-x23HKyhXLW
 seoTitle: Higher-Order Functions in JavaScript
