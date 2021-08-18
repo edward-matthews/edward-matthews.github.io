@@ -36,7 +36,7 @@
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
         "start": "react-scripts start",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -b main -d out -t true",
+        "deploy": "gh-pages -b main -d build -t true",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
