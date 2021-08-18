@@ -3,10 +3,9 @@ title: Higher-Order Functions in JavaScript
 slug: higher-order-functions-in-javascript
 banner: https://cdn-images-1.medium.com/max/1800/0*YKjms-x23HKyhXLW
 thumbnail: https://cdn-images-1.medium.com/max/1800/0*YKjms-x23HKyhXLW
-seoTitle: Higher-Order Functions in JavaScript
 description: A practical guide through each of the higher-order array functions in JavaScript. Easy to understand examples using the dice game 'Yacht' to explore forEach, map, filter, reduce, every, some, find and findIndex functions. Hopefully after reading this you'll come away with a better understanding of how and why to use these, at first, unnecessary seeming functions.
-isPublished: true
 publishedOn: "2021-08-15"
+tags: ['JavaScript', 'tutorial', 'arrays', 'higher-order functions']
 ---
 ## A Practical Guide
 

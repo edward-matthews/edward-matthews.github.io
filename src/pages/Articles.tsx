@@ -14,6 +14,7 @@ interface Frontmatter {
     banner: string;
     description: string;
     publishedOn: string;
+    tags: string[];
 }
 
 const Articles: React.FC = () => {
