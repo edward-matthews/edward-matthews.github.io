@@ -25,18 +25,25 @@ interface Frontmatter {
 const Post: React.FC = () => {
     const slug = useParams<PostParams>().slug;
 
+    const [mdx, setMdx] = useState<JSX.Element>();
     const [postContent, setPostContent] = useState('');
     const [postFrontmatter, setPostFrontmatter] = useState<Frontmatter>();
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        import(`../posts/${slug}.md`)
-            .then((post) => fetch(post.default))
-            .then((response) => response.text())
-            .then((text) => matter(text))
-            .then((gm) => [setPostContent(gm.content), setPostFrontmatter(gm.data as Frontmatter)])
-            .catch(() => setHasError(true));
+        import(`!babel-loader!@mdx-js/loader!../posts/${slug}.mdx`).then((m) => [
+            console.log(m.default),
+            setPostFrontmatter(m.metadata as Frontmatter),
+        ]);
+        // .then((post) => fetch(post.default))
+        // .then((res) => res.text())
+        // .then((text) => );
+        // .then((response) => response.text())
+        // .then((text) => matter(text))
+        // .then((gm) => [setPostContent(gm.content), setPostFrontmatter(gm.data as Frontmatter)])
+        // .catch(() => setHasError(true));
     }, []);
+
     return (
         <>
             {hasError && <Redirect to="/404" />}
@@ -48,7 +55,7 @@ const Post: React.FC = () => {
                     url={`/articles/${slug}`}
                 />
             )}
-            {postFrontmatter && (
+            {/* {postFrontmatter && (
                 <div>
                     <h1>{postFrontmatter.title}</h1>
                     <small>
@@ -56,7 +63,7 @@ const Post: React.FC = () => {
 
                         <a
                             className="externalLink"
-                            href={`https://github.com/edward-matthews/edward-matthews.github.io/edit/main/src/posts/${slug}.md`}
+                            href={`https://github.com/edward-matthews/edward-matthews.github.io/edit/main/src/posts/${slug}.mdx`}
                         >
                             <i style={{ fontSize: '14px', display: 'inline' }} className="bi bi-github">
                                 {' '}
@@ -65,9 +72,9 @@ const Post: React.FC = () => {
                         </a>
                     </small>
                     <img src={postFrontmatter.banner} width="100%" />
-                    <Markdown>{postContent}</Markdown>
+                    {postContent}
                 </div>
-            )}
+            )} */}
         </>
     );
 };

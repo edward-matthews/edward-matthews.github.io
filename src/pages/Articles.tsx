@@ -25,7 +25,7 @@ const Articles: React.FC = () => {
     const [articles, setArticles] = useState<Frontmatter[]>([]);
     const [articlesLoaded, setArticlesLoaded] = useState(false);
     useEffect(() => {
-        const slugs = getSlugs(require.context('../posts/', false, /\.(md)$/));
+        const slugs = getSlugs(require.context('../posts/', false, /\.(mdx)$/));
         slugs.map((slug) => {
             import(`../posts/${slug.substring(2, slug.length)}`)
                 .then((post) => fetch(post.default))
