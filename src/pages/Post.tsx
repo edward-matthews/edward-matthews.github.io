@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
-
-import matter from 'gray-matter';
-
-import Markdown from '../components/Markdown';
 import MetaTags from '../components/MetaTags';
 
 type PostParams = {
@@ -25,23 +21,14 @@ interface Frontmatter {
 const Post: React.FC = () => {
     const slug = useParams<PostParams>().slug;
 
-    const [mdx, setMdx] = useState<JSX.Element>();
     const [postContent, setPostContent] = useState('');
     const [postFrontmatter, setPostFrontmatter] = useState<Frontmatter>();
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        import(`!babel-loader!@mdx-js/loader!../posts/${slug}.mdx`).then((m) => [
-            console.log(m.default),
-            setPostFrontmatter(m.metadata as Frontmatter),
-        ]);
-        // .then((post) => fetch(post.default))
-        // .then((res) => res.text())
-        // .then((text) => );
-        // .then((response) => response.text())
-        // .then((text) => matter(text))
-        // .then((gm) => [setPostContent(gm.content), setPostFrontmatter(gm.data as Frontmatter)])
-        // .catch(() => setHasError(true));
+        import(`!babel-loader!@mdx-js/loader!../posts/${slug}.mdx`)
+            .then((m) => [setPostContent(m.default), setPostFrontmatter(m.metadata as Frontmatter)])
+            .catch(() => setHasError(true));
     }, []);
 
     return (
@@ -55,7 +42,7 @@ const Post: React.FC = () => {
                     url={`/articles/${slug}`}
                 />
             )}
-            {/* {postFrontmatter && (
+            {postFrontmatter && (
                 <div>
                     <h1>{postFrontmatter.title}</h1>
                     <small>
@@ -74,7 +61,7 @@ const Post: React.FC = () => {
                     <img src={postFrontmatter.banner} width="100%" />
                     {postContent}
                 </div>
-            )} */}
+            )}
         </>
     );
 };
