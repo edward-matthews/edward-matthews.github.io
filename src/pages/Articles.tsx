@@ -5,7 +5,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
 import MetaTags from '../components/MetaTags';
-import matter from 'gray-matter';
 
 interface Frontmatter {
     title: string;
@@ -27,12 +26,9 @@ const Articles: React.FC = () => {
     useEffect(() => {
         const slugs = getSlugs(require.context('../posts/', false, /\.(mdx)$/));
         slugs.map((slug) => {
-            import(`../posts/${slug.substring(2, slug.length)}`)
-                .then((post) => fetch(post.default))
-                .then((response) => response.text())
-                .then((text) => matter(text))
-                .then((gm) => gm.data as Frontmatter)
-                .then((fm) => setArticles([...articles, fm]));
+            import(`!babel-loader!@mdx-js/loader!../posts/${slug.substring(2, slug.length)}`)
+                .then((m) => setArticles([...articles, m.metadata as Frontmatter]))
+                .catch((err) => console.error(err));
         });
         setArticlesLoaded(true);
     }, []);
