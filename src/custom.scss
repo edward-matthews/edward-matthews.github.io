@@ -2,34 +2,55 @@
 // Override default variables before the import
 $primary: #0C4B33;
 $secondary: #44B78B;
-$success: #3AAED8;
-$info: #FFFCE8;
-$warning: #F6AE2D;
-$danger: #E3655B;
-$light: #CBBFBB;
-$dark: #333333;
-$navbar-dark-color: rgba($light,
-.55) !default;
-$navbar-dark-hover-color: rgba($light,
-.75) !default;
-$navbar-dark-active-color: $light !default;
-$navbar-dark-brand-color: $secondary !default;
-$navbar-dark-brand-hover-color: $secondary !default;
-$body-bg: #DDD;
-$body-color: #333;
+$body-color: #555;
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
-.navbar-brand {
-    font-size: x-large;
-}
-
 html {
     overflow-y: scroll;
     width: 100vw;
+    max-width: 100%;
 }
 
-figure img {
-    width: 100%;
+body {
+    margin: 0 auto;
+}
+
+h1,
+h2,
+strong {
+    color: #222;
+}
+
+a {
+    color: $primary;
+}
+
+header {
+    background-color: $primary;
+    background-image: url("/images/mountain-header.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    line-height: 1.2;
+    padding: 7vw 2em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+header img {
+    display: inline-block;
+    height: 120px;
+    vertical-align: top;
+    width: 120px;
+    border-radius: 90px;
+    padding: 1em 2em;
+    background: $secondary;
 }
 
 tr {
@@ -51,24 +72,6 @@ tr:hover {
 
 .unusual-link {
     cursor: pointer
-}
-
-@keyframes navbarAnimate {
-    0%,
-    85%,
-    100% {
-        transform: rotate(0deg);
-    }
-    90% {
-        transform: rotate(5deg);
-    }
-    95% {
-        transform: rotate(-5deg);
-    }
-}
-
-.navbar .active {
-    animation: navbarAnimate 2s linear 0s infinite normal;
 }
 
 .portfolioCard {

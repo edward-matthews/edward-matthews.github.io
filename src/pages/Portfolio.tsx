@@ -47,7 +47,7 @@ const Portfolio: React.FC = () => {
         <>
             <MetaTags
                 title="Portfolio"
-                description="All of the repositories found at github.com/edward-matthews pulled in dynamically from the GitHub API. Filter by language and be sure to check those with an 'Updated Recently!' badge to see the what's keeping my attention right now."
+                description="All of my public repositories from github.com/edward-matthews pulled in dynamically with the GitHub API. Filter by language and be sure to check those with an 'Updated Recently!' badge to see the what's keeping my attention right now."
                 thumbnail=""
                 url="/portfolio"
             />
