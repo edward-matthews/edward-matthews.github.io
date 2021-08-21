@@ -14,6 +14,7 @@ interface Frontmatter {
     thumbnail: string;
     banner: string;
     description: string;
+    published: boolean;
     publishedOn: string;
     tags: string[];
 }

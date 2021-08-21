@@ -12,6 +12,7 @@ interface Frontmatter {
     thumbnail: string;
     banner: string;
     description: string;
+    published: boolean;
     publishedOn: string;
     tags: string[];
 }
@@ -44,19 +45,23 @@ const Articles: React.FC = () => {
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
                     {articles.map((fm, idx) => {
-                        return (
-                            <Accordion.Item key={idx} eventKey={String(idx)}>
-                                <Accordion.Header>
-                                    <span className="me-auto">{fm.title}</span>
-                                    <small className="ms-auto">{moment(fm.publishedOn).format('MMMM Do, YYYY')}</small>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {fm.description}
-                                    <br />
-                                    <Link to={`/articles/${fm.slug}`}>Read more...</Link>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        );
+                        if (fm.published) {
+                            return (
+                                <Accordion.Item key={idx} eventKey={String(idx)}>
+                                    <Accordion.Header>
+                                        <span className="me-auto">{fm.title}</span>
+                                        <small className="ms-auto">
+                                            {moment(fm.publishedOn).format('MMMM Do, YYYY')}
+                                        </small>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        {fm.description}
+                                        <br />
+                                        <Link to={`/articles/${fm.slug}`}>Read more...</Link>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            );
+                        }
                     })}
                 </Accordion>
             ) : (
