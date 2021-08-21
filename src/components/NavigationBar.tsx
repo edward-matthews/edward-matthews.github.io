@@ -5,7 +5,7 @@ const NavigationBar: React.FC = () => {
     return (
         <header>
             <Link to="/">
-                <img alt="" src="/logo.png" width="30" height="30" className="d-inline-block align-top" />
+                <img alt="" src="/inkan3.png" />
             </Link>
             <h1>Edward Matthews</h1>
         </header>

@@ -42,6 +42,18 @@ const Articles: React.FC = () => {
         setArticlesLoaded(true);
     }, []);
 
+    const boxChecked = (tag: string) => {
+        const checkBox = document.getElementById(tag) as HTMLInputElement;
+        if (checkBox.checked) {
+            if (!queryTags.includes(tag)) {
+                setQueryTags([...queryTags, tag]);
+            }
+        } else {
+            if (queryTags.includes(tag)) {
+                setQueryTags(queryTags.filter((q) => q !== tag));
+            }
+        }
+    };
     return (
         <>
             <MetaTags
@@ -50,6 +62,8 @@ const Articles: React.FC = () => {
                 thumbnail=""
                 url="/articles"
             />
+            <input type="checkbox" id="Django" onClick={() => boxChecked('Django')} />
+            Django
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
                     {articles.map((fm, idx) => {
