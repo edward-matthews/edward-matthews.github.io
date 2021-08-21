@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
@@ -22,8 +22,16 @@ const Articles: React.FC = () => {
         return r.keys();
     }
 
+    function useQuery() {
+        return new URLSearchParams(useLocation().search);
+    }
+
+    const query = useQuery();
+
     const [articles, setArticles] = useState<Frontmatter[]>([]);
     const [articlesLoaded, setArticlesLoaded] = useState(false);
+    const [queryTags, setQueryTags] = useState(query.getAll('tags'));
+
     useEffect(() => {
         const slugs = getSlugs(require.context('../posts/', false, /\.(mdx)$/));
         slugs.map((slug) => {
@@ -45,7 +53,10 @@ const Articles: React.FC = () => {
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
                     {articles.map((fm, idx) => {
-                        if (fm.published) {
+                        if (
+                            fm.published &&
+                            (fm.tags.some((tag) => queryTags.includes(tag)) || queryTags.length === 0)
+                        ) {
                             return (
                                 <Accordion.Item key={idx} eventKey={String(idx)}>
                                     <Accordion.Header>

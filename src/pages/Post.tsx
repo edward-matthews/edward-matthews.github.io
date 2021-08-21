@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import moment from 'moment';
 import MetaTags from '../components/MetaTags';
 
@@ -61,6 +61,17 @@ const Post: React.FC = () => {
                     </small>
                     <img src={postFrontmatter.banner} width="100%" />
                     {postContent}
+                    <div className="tags">
+                        {postFrontmatter.tags.map((tag, idx) => {
+                            return (
+                                <Link to={`/articles?tags=${tag}`} key={idx}>
+                                    <mark style={{ display: 'inline-block', margin: '0.25em', marginBottom: '2em' }}>
+                                        #{tag}
+                                    </mark>
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
         </>
