@@ -79,7 +79,7 @@ tr {
 
 tr:hover {
     text-decoration: underline solid 0.1em;
-    background-color: rgba($light, .1);
+    background: rgba($primary, .1);
 }
 
 .unusual-link {
@@ -148,7 +148,7 @@ tr:hover {
     animation: floatingButtonAnimate 1s linear 0s infinite normal;
 }
 
-.bi {
+.floating-button .bi {
     display: flex;
     font-size: 2rem;
     color: $dark;
@@ -164,4 +164,25 @@ tr:hover {
 .modal-open {
     overflow: hidden;
     padding-right: 0 !important;
+}
+
+blockquote {
+    font-size: 1.1em;
+    width: 90%;
+    margin: 50px auto;
+    font-style: italic;
+    color: $dark;
+    padding: 1em;
+    border-left: 8px solid $primary;
+    line-height: 1.6;
+    position: relative;
+    background: $light;
+}
+
+blockquote span {
+    display: block;
+    color: $dark;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1em;
 }
