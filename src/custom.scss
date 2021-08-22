@@ -28,8 +28,15 @@ mark {
     background-color: rgba($primary, 0.25);
 }
 
-header {
+.no-webp header {
+    background-image: url("/images/whispy-guys.png");
+}
+
+.webp header {
     background-image: url("/images/whispy-guys.webp");
+}
+
+header {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
