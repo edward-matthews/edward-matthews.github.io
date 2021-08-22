@@ -64,6 +64,12 @@ const Articles: React.FC = () => {
             />
             <input type="checkbox" id="Django" onClick={() => boxChecked('Django')} />
             Django
+            <input type="checkbox" id="React" onClick={() => boxChecked('React')} />
+            React
+            <input type="checkbox" id="JavaScript" onClick={() => boxChecked('JavaScript')} />
+            JavaScript
+            <input type="checkbox" id="Python" onClick={() => boxChecked('Python')} />
+            Python
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
                     {articles.map((fm, idx) => {
