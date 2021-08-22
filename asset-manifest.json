@@ -1,28 +1,30 @@
 {
   "files": {
-    "static/js/0.b9d8ab87.chunk.js": "/static/js/0.b9d8ab87.chunk.js",
-    "static/js/0.b9d8ab87.chunk.js.map": "/static/js/0.b9d8ab87.chunk.js.map",
+    "static/js/0.d7f448dc.chunk.js": "/static/js/0.d7f448dc.chunk.js",
+    "static/js/0.d7f448dc.chunk.js.map": "/static/js/0.d7f448dc.chunk.js.map",
+    "static/js/1.891e8046.chunk.js": "/static/js/1.891e8046.chunk.js",
+    "static/js/1.891e8046.chunk.js.map": "/static/js/1.891e8046.chunk.js.map",
     "main.css": "/static/css/main.507f1cb4.chunk.css",
-    "main.js": "/static/js/main.7337cc9f.chunk.js",
-    "main.js.map": "/static/js/main.7337cc9f.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.89c0aefa.js",
-    "runtime-main.js.map": "/static/js/runtime-main.89c0aefa.js.map",
-    "static/css/3.cf1d5210.chunk.css": "/static/css/3.cf1d5210.chunk.css",
-    "static/js/3.e0d0030b.chunk.js": "/static/js/3.e0d0030b.chunk.js",
-    "static/js/3.e0d0030b.chunk.js.map": "/static/js/3.e0d0030b.chunk.js.map",
+    "main.js": "/static/js/main.b163e2c4.chunk.js",
+    "main.js.map": "/static/js/main.b163e2c4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d368caab.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d368caab.js.map",
+    "static/css/4.cf1d5210.chunk.css": "/static/css/4.cf1d5210.chunk.css",
+    "static/js/4.20265ed4.chunk.js": "/static/js/4.20265ed4.chunk.js",
+    "static/js/4.20265ed4.chunk.js.map": "/static/js/4.20265ed4.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/3.cf1d5210.chunk.css.map": "/static/css/3.cf1d5210.chunk.css.map",
+    "static/css/4.cf1d5210.chunk.css.map": "/static/css/4.cf1d5210.chunk.css.map",
     "static/css/main.507f1cb4.chunk.css.map": "/static/css/main.507f1cb4.chunk.css.map",
-    "static/js/3.e0d0030b.chunk.js.LICENSE.txt": "/static/js/3.e0d0030b.chunk.js.LICENSE.txt",
+    "static/js/4.20265ed4.chunk.js.LICENSE.txt": "/static/js/4.20265ed4.chunk.js.LICENSE.txt",
     "static/media/bootstrap-icons.css": "/static/media/bootstrap-icons.dfd0ea12.woff2",
-    "static/media/higher-order-functions-in-javascript.mdx": "/static/media/higher-order-functions-in-javascript.5a758fa9.mdx",
+    "static/media/higher-order-functions-in-javascript.mdx": "/static/media/higher-order-functions-in-javascript.26ed90c4.mdx",
     "static/media/custom.scss": "/static/media/whispy-guys.d869118e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.89c0aefa.js",
-    "static/css/3.cf1d5210.chunk.css",
-    "static/js/3.e0d0030b.chunk.js",
+    "static/js/runtime-main.d368caab.js",
+    "static/css/4.cf1d5210.chunk.css",
+    "static/js/4.20265ed4.chunk.js",
     "static/css/main.507f1cb4.chunk.css",
-    "static/js/main.7337cc9f.chunk.js"
+    "static/js/main.b163e2c4.chunk.js"
   ]
 }
