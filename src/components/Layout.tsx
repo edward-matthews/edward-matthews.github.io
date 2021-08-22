@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from '../components/NavigationBar';
+import MainBanner from './MainBanner';
 import Container from 'react-bootstrap/Container';
 import FloatingButton from '../components/FloatingButton';
 
@@ -10,7 +10,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }: Props) => {
     return (
         <>
-            <NavigationBar />
+            <MainBanner />
             <Container id="contentDiv">{children}</Container>
             <FloatingButton />
         </>

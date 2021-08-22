@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -51,6 +51,9 @@
                     window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
                 }
             })(window.location);
+        </script>
+        <script>
+            document.documentElement.classList.remove('no-js');
         </script>
         <script type="text/javascript" src="modernizr-custom.js"></script>
     </head>

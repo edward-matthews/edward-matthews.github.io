@@ -28,6 +28,10 @@ mark {
     background-color: rgba($primary, 0.25);
 }
 
+.no-js header {
+    background-image: url("/images/whispy-guys.png");
+}
+
 .no-webp header {
     background-image: url("/images/whispy-guys.png");
 }

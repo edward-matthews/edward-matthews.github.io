@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavigationBar: React.FC = () => {
+const MainBanner: React.FC = () => {
     return (
         <header>
             <Link to="/">
@@ -15,4 +15,4 @@ const NavigationBar: React.FC = () => {
     );
 };
 
-export default NavigationBar;
+export default MainBanner;
