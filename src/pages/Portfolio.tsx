@@ -46,9 +46,9 @@ const Portfolio: React.FC = () => {
     return (
         <>
             <MetaTags
-                title="Portfolio"
+                title="Portfolio | EdwardMatthe.ws"
                 description="All of my public repositories from github.com/edward-matthews pulled in dynamically with the GitHub API. Filter by language and be sure to check those with an 'Updated Recently!' badge to see the what's keeping my attention right now."
-                thumbnail=""
+                thumbnail="https://edwardmatthe.ws/logo.png"
                 url="/portfolio"
             />
             <FloatingLabel controlId="floatingSelect" label="Languages">

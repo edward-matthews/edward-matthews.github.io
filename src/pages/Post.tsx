@@ -37,7 +37,7 @@ const Post: React.FC = () => {
             {hasError && <Redirect to="/404" />}
             {postFrontmatter && (
                 <MetaTags
-                    title={postFrontmatter.title}
+                    title={`${postFrontmatter.title} | EdwardMatthe.ws`}
                     description={postFrontmatter.description}
                     thumbnail={postFrontmatter.thumbnail}
                     url={`/articles/${slug}`}

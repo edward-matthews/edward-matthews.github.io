@@ -57,9 +57,9 @@ const Articles: React.FC = () => {
     return (
         <>
             <MetaTags
-                title="Articles"
+                title="Articles | EdwardMatthe.ws"
                 description="All of my writings, primarily about Django and React, links to edit any article on GitHub if you find a mistake (oops!)."
-                thumbnail=""
+                thumbnail="https://edwardmatthe.ws/logo.png"
                 url="/articles"
             />
             <input type="checkbox" id="Django" onClick={() => boxChecked('Django')} />
