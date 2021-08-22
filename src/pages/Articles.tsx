@@ -54,6 +54,8 @@ const Articles: React.FC = () => {
             }
         }
     };
+
+    const tags = ['Django', 'React', 'JavaScript', 'Python'];
     return (
         <>
             <MetaTags
@@ -62,14 +64,17 @@ const Articles: React.FC = () => {
                 thumbnail="https://edwardmatthe.ws/logo.png"
                 url="/articles"
             />
-            <input type="checkbox" id="Django" onClick={() => boxChecked('Django')} />
-            Django
-            <input type="checkbox" id="React" onClick={() => boxChecked('React')} />
-            React
-            <input type="checkbox" id="JavaScript" onClick={() => boxChecked('JavaScript')} />
-            JavaScript
-            <input type="checkbox" id="Python" onClick={() => boxChecked('Python')} />
-            Python
+            <ul className="checkboxList">
+                {tags.map((tag, idx) => {
+                    return (
+                        <li key={idx}>
+                            <input type="checkbox" id={tag} onClick={() => boxChecked(`${tag}`)} />
+                            {tag}
+                        </li>
+                    );
+                })}
+            </ul>
+
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
                     {articles.map((fm, idx) => {
