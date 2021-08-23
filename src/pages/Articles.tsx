@@ -31,31 +31,46 @@ const Articles: React.FC = () => {
     const [articles, setArticles] = useState<Frontmatter[]>([]);
     const [articlesLoaded, setArticlesLoaded] = useState(false);
     const [queryTags, setQueryTags] = useState(query.getAll('tags'));
+    const [allTags, setAllTags] = useState<string[]>([]);
 
     useEffect(() => {
         const slugs = getSlugs(require.context('../posts/', false, /\.(mdx)$/));
         slugs.map((slug) => {
             import(`!babel-loader!@mdx-js/loader!../posts/${slug.substring(2, slug.length)}`)
-                .then((m) => setArticles([...articles, m.metadata as Frontmatter]))
+                .then((m) => m.metadata as Frontmatter)
+                .then((fm) => {
+                    [setArticles((articles) => [...articles, fm]), setAllTags((allTags) => [...allTags, ...fm.tags])];
+                })
                 .catch((err) => console.error(err));
         });
         setArticlesLoaded(true);
     }, []);
 
-    const boxChecked = (tag: string) => {
-        const checkBox = document.getElementById(tag) as HTMLInputElement;
+    const boxChecked = (qTag: string) => {
+        const checkBox = document.getElementById(qTag) as HTMLInputElement;
         if (checkBox.checked) {
-            if (!queryTags.includes(tag)) {
-                setQueryTags([...queryTags, tag]);
+            if (!queryTags.includes(qTag)) {
+                setQueryTags([...queryTags, qTag]);
             }
         } else {
-            if (queryTags.includes(tag)) {
-                setQueryTags(queryTags.filter((q) => q !== tag));
+            if (queryTags.includes(qTag)) {
+                setQueryTags(queryTags.filter((q) => q !== qTag));
             }
         }
     };
 
-    const tags = ['Django', 'React', 'JavaScript', 'Python'];
+    const alphabetize = (arr: string[]) => {
+        return arr.sort((a, b) => {
+            return a.toLowerCase().localeCompare(b.toLowerCase());
+        });
+    };
+
+    const sortByDate = (posts: Frontmatter[]) => {
+        return posts.sort((a, b) => {
+            return moment(b.publishedOn).diff(moment(a.publishedOn));
+        });
+    };
+
     return (
         <>
             <MetaTags
@@ -65,10 +80,15 @@ const Articles: React.FC = () => {
                 url="/articles"
             />
             <ul className="checkboxList">
-                {tags.map((tag, idx) => {
+                {alphabetize(allTags).map((tag, idx) => {
                     return (
                         <li key={idx}>
-                            <input type="checkbox" id={tag} onClick={() => boxChecked(`${tag}`)} />
+                            <input
+                                type="checkbox"
+                                id={tag}
+                                checked={queryTags.includes(tag)}
+                                onClick={() => boxChecked(`${tag}`)}
+                            />
                             {tag}
                         </li>
                     );
@@ -77,7 +97,7 @@ const Articles: React.FC = () => {
 
             {articlesLoaded ? (
                 <Accordion defaultActiveKey="0">
-                    {articles.map((fm, idx) => {
+                    {sortByDate(articles).map((fm, idx) => {
                         if (
                             fm.published &&
                             (fm.tags.some((tag) => queryTags.includes(tag)) || queryTags.length === 0)
