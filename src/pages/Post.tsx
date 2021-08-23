@@ -16,6 +16,7 @@ interface Frontmatter {
     description: string;
     published: boolean;
     publishedOn: string;
+    updatedOn?: string;
     tags: string[];
 }
 
@@ -47,8 +48,10 @@ const Post: React.FC = () => {
                 <div>
                     <h1>{postFrontmatter.title}</h1>
                     <small>
-                        {moment(postFrontmatter.publishedOn).format('MMMM Do, YYYY')}
-
+                        <i>{moment(postFrontmatter.publishedOn).format('MMMM Do, YYYY')}</i>
+                        {postFrontmatter.updatedOn && (
+                            <> (Updated: {moment(postFrontmatter.updatedOn).format('MMMM Do, YYYY')})</>
+                        )}
                         <a
                             className="externalLink"
                             href={`https://github.com/edward-matthews/edward-matthews.github.io/edit/main/src/posts/${slug}.mdx`}
@@ -59,6 +62,7 @@ const Post: React.FC = () => {
                             </i>
                         </a>
                     </small>
+
                     <img src={postFrontmatter.banner} width="100%" />
                     {postContent}
                     <div className="tags">

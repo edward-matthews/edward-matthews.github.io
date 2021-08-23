@@ -14,6 +14,7 @@ interface Frontmatter {
     description: string;
     published: boolean;
     publishedOn: string;
+    updatedOn?: string;
     tags: string[];
 }
 
@@ -71,7 +72,7 @@ const Articles: React.FC = () => {
         }
     };
 
-    const alphabetize = (arr: string[]) => {
+    const sortByFrequency = (arr: string[]) => {
         return arr.sort((a, b) => {
             return allTags[b] - allTags[a];
         });
@@ -92,7 +93,7 @@ const Articles: React.FC = () => {
                 url="/articles"
             />
             <ul className="checkboxList">
-                {alphabetize(Object.keys(allTags)).map((tag, idx) => {
+                {sortByFrequency(Object.keys(allTags)).map((tag, idx) => {
                     return (
                         <li key={idx}>
                             <input
