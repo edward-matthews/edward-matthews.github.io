@@ -17,6 +17,10 @@ interface Frontmatter {
     tags: string[];
 }
 
+interface TagDict {
+    [key: string]: number;
+}
+
 const Articles: React.FC = () => {
     function getSlugs(r: __WebpackModuleApi.RequireContext) {
         return r.keys();
@@ -31,7 +35,7 @@ const Articles: React.FC = () => {
     const [articles, setArticles] = useState<Frontmatter[]>([]);
     const [articlesLoaded, setArticlesLoaded] = useState(false);
     const [queryTags, setQueryTags] = useState(query.getAll('tags'));
-    const [allTags, setAllTags] = useState<string[]>([]);
+    const [allTags, setAllTags] = useState<TagDict>({});
 
     useEffect(() => {
         const slugs = getSlugs(require.context('../posts/', false, /\.(mdx)$/));
@@ -39,7 +43,15 @@ const Articles: React.FC = () => {
             import(`!babel-loader!@mdx-js/loader!../posts/${slug.substring(2, slug.length)}`)
                 .then((m) => m.metadata as Frontmatter)
                 .then((fm) => {
-                    [setArticles((articles) => [...articles, fm]), setAllTags((allTags) => [...allTags, ...fm.tags])];
+                    [
+                        setArticles((articles) => [...articles, fm]),
+                        fm.tags.map((tag) => {
+                            setAllTags((allTags) => ({
+                                ...allTags,
+                                [tag]: tag in allTags ? allTags[tag] + 1 : 1,
+                            }));
+                        }),
+                    ];
                 })
                 .catch((err) => console.error(err));
         });
@@ -61,7 +73,7 @@ const Articles: React.FC = () => {
 
     const alphabetize = (arr: string[]) => {
         return arr.sort((a, b) => {
-            return a.toLowerCase().localeCompare(b.toLowerCase());
+            return allTags[b] - allTags[a];
         });
     };
 
@@ -80,7 +92,7 @@ const Articles: React.FC = () => {
                 url="/articles"
             />
             <ul className="checkboxList">
-                {alphabetize(allTags).map((tag, idx) => {
+                {alphabetize(Object.keys(allTags)).map((tag, idx) => {
                     return (
                         <li key={idx}>
                             <input
@@ -89,7 +101,7 @@ const Articles: React.FC = () => {
                                 checked={queryTags.includes(tag)}
                                 onClick={() => boxChecked(`${tag}`)}
                             />
-                            {tag}
+                            {`${tag}(${allTags[tag]})`}
                         </li>
                     );
                 })}
