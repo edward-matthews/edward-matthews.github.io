@@ -6,8 +6,8 @@ export const metadata = {
     description:
         "A practical guide through each of the higher-order array functions in JavaScript. Easy to understand examples using the dice game 'Yacht' to explore forEach, map, filter, reduce, every, some, find and findIndex functions. Hopefully after reading this you'll come away with a better understanding of how and why to use these, at first, unnecessary seeming functions.",
     published: true,
-    publishedOn: '2021-08-23',
-    tags: ['JavaScript', 'tutorial', 'arrays', 'higher-order functions'],
+    publishedOn: '2021-08-24',
+    tags: ['JavaScript', 'Tutorial', 'Arrays', 'Higher Order Functions'],
 };
 
 import Caption from '../components/Caption';
@@ -132,7 +132,7 @@ const nextHand = () => {
 
 We apply a filter to our `hand` array which takes each element (named `_`by convention, as we won't use it) and its index and returns an array of elements for which the equivalent index in `retain` is `true`.
 
-Once you begin to grow more familiar with the syntax of higher-order functions I think it becomes clear that this is far more clear.
+Once you begin to grow more familiar with the syntax of higher-order functions, they are far more clear.
 
 #### Array.prototype.reduce()
 
@@ -164,7 +164,7 @@ Here the first argument to reduce is the (programmer chosen) name for the accumu
 
 #### Array.prototype.every()
 
-The highest scoring point category in Yacht is appropriately also called 'Yacht' racking up a massive 50 points for the player lucky enough to get it. Every die must have the same value.
+The highest scoring point category in Yacht is appropriately called 'Yacht' racking up a massive 50 points for the player lucky enough to get it. Every die must have the same value.
 
 ```javascript
 const getYachtScore = () => {
@@ -179,7 +179,7 @@ const getYachtScore = () => {
 
 <Caption>Trivial for a for-loop</Caption>
 
-To me, this reads very poorly. It is not at all obvious on a quick glance what conditions `hand` has to satisfy to return a score of 50.
+To me, this reads very poorly. It is not at all obvious at a glance what conditions `hand` has to satisfy to return a score of 50.
 
 With a higher-order function on the other hand (pun intended) we just have to parse through a, somewhat stilted, English sentence.
 
@@ -205,14 +205,14 @@ _I've grouped these two functions together as they operate the same; the first p
 
 These functions will return either the first element or index for the first element of an array that satisfies the function passed to it. If not found then `undefined` (in the case of `find()`) or `-1` (in the case of `findIndex()`).
 
-These functions are good for checking the existence of an element based on set criteria, but won't give you a comprehensive list of those that meet it (for that, please use `filter()`). So, in fact we don't have a use case for this function either in the current program. Hopefully though, the potential use cases are apparent. Any time you would be using a `break` to short circuit out of a loop and using the value (or index) from that iteration through the loop can be replaced with one of these functions.
+These functions are good for checking the existence of an element based on set criteria, but won't give you a comprehensive list of those that meet it (for that, please use `filter()`). So, in fact, we don't have a use case for this function either in the current program. Hopefully, though, the potential use cases are apparent. Any time you would be using a `break` to short circuit out of a loop and using the value (or index) from that iteration through the loop can be replaced with one of these functions.
 
 ---
 
 ### Smooth Sailing from Here on Out?
 
-Now that we have explored each of these functions, hopefully you will be able to find a place for them in any project you may come to work on. I think you can appreciate the simplicity of the syntax relative to what a for-loop offers.
+Now that we have explored each of these functions, hopefully, you will be able to find a place for them in any project you may come to work on. I think you can appreciate the simplicity of the syntax relative to what a for-loop offers.
 
-Higher-order functions are not, however, without their detractors. One of the main criticisms, and a valid one, is that they are technically less efficient than the for-loop equivalent. All of the examples given above will run faster with the more long-winded and unclear syntax. There is therefore, a trade off between performance and readability. My strategy, one what I would recommend to you, is as follows: whereever possible, use the higher-order functions and only when performance starts to suffer and optimizations need to be made should you refactor to use the for-loop. This gives all the benefits of readability in the early stages of a project when you are likely to be going over the same areas multiple times. Furthermore, if a comprehensive suite of tests is written the tests should continue to pass when any functions are converted to the for-loop syntax.
+Higher-order functions are not, however, without their detractors. One of the main criticisms, and a valid one, is that they are technically less efficient than the for-loop equivalent. All of the examples given above will run faster with the more long-winded and unclear syntax. There is, therefore, a trade-off between performance and readability. My strategy, that I would recommend to you, is as follows: wherever possible, use the higher-order functions and only when performance starts to suffer and optimizations need to be made should you refactor to use the for-loop. This gives all the benefits of readability in the early stages of a project when you are likely to be going over the same areas multiple times. Furthermore, if a comprehensive suite of tests is written the tests should continue to pass when any functions are converted to the for-loop syntax.
 
-In conclusion, we have taken a tour of higher-order functions and how they may be applied to a real life example. For anyone who followed along and is interested in the final result, a playable version of Yacht using (slightly modified versions of) the functions described above is available [here](https://www.edwardmatthe.ws/iconic-yacht).
+In conclusion, we have taken a tour of higher-order functions and how they may be applied to a real-life example. For anyone who followed along and is interested in the final result, a playable version of Yacht using (slightly modified versions of) the functions described above is available [here](https://www.edwardmatthe.ws/iconic-yacht).
