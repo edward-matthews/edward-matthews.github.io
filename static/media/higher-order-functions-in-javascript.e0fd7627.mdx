@@ -196,14 +196,23 @@ Not only is it considerably shorter, but hopefully you are beginning to agree th
 #### Array.prototype.some()
 
 This function behaves very similarly to Array.Prototype.every() the only difference is that it returns `true` if any element satisfies the condition (and `false` if none of them does).
-TODO
+
+It doesn't have an obvious use case for our Yacht example but hopefully by understanding the Array.Prototype.every() function the use should be clear.
 
 #### Array.prototype.find() & Array.prototype.findIndex()
 
 _I've grouped these two functions together as they operate the same; the first providing the value and the second its index._
-TODO
+
+These functions will return either the first element or index for the first element of an array that satisfies the function passed to it. If not found then `undefined` (in the case of `find()`) or `-1` (in the case of `findIndex()`).
+
+These functions are good for checking the existence of an element based on set criteria, but won't give you a comprehensive list of those that meet it (for that, please use `filter()`). So, in fact we don't have a use case for this function either in the current program. Hopefully though, the potential use cases are apparent. Any time you would be using a `break` to short circuit out of a loop and using the value (or index) from that iteration through the loop can be replaced with one of these functions.
 
 ---
 
-Smooth Sailing from Here on Out
-TODO
+### Smooth Sailing from Here on Out?
+
+Now that we have explored each of these functions, hopefully you will be able to find a place for them in any project you may come to work on. I think you can appreciate the simplicity of the syntax relative to what a for-loop offers.
+
+Higher-order functions are not, however, without their detractors. One of the main criticisms, and a valid one, is that they are technically less efficient than the for-loop equivalent. All of the examples given above will run faster with the more long-winded and unclear syntax. There is therefore, a trade off between performance and readability. My strategy, one what I would recommend to you, is as follows: whereever possible, use the higher-order functions and only when performance starts to suffer and optimizations need to be made should you refactor to use the for-loop. This gives all the benefits of readability in the early stages of a project when you are likely to be going over the same areas multiple times. Furthermore, if a comprehensive suite of tests is written the tests should continue to pass when any functions are converted to the for-loop syntax.
+
+In conclusion, we have taken a tour of higher-order functions and how they may be applied to a real life example. For anyone who followed along and is interested in the final result, a playable version of Yacht using (slightly modified versions of) the functions described above is available [here](https://www.edwardmatthe.ws/iconic-yacht).
