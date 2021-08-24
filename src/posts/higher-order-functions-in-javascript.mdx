@@ -203,7 +203,9 @@ It doesn't have an obvious use case for our Yacht example but hopefully by under
 
 _I've grouped these two functions together as they operate the same; the first providing the value and the second its index._
 
-TODO
+These functions will return either the first element or index for the first element of an array that satisfies the function passed to it. If not found then `undefined` (in the case of `find()`) or `-1` (in the case of `findIndex()`).
+
+These functions are good for checking the existence of an element based on set criteria, but won't give you a comprehensive list of those that meet it (for that, please use `filter()`). So, in fact we don't have a use case for this function either in the current program. Hopefully though, the potential use cases are apparent. Any time you would be using a `break` to short circuit out of a loop and using the value (or index) from that iteration through the loop can be replaced with one of these functions.
 
 ---
 
