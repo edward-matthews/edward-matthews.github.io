@@ -6,8 +6,8 @@ const MainBanner: React.FC = () => {
         <header>
             <Link to="/">
                 <picture>
-                    <source srcSet="/logo.webp" type="image/webp" />
-                    <img src="/logo.png" alt="A logo resembling a Japanese inkan stamp with the name えど" />
+                    <source srcSet="/images/logo.webp" type="image/webp" />
+                    <img src="/images/logo.png" alt="A logo resembling a Japanese inkan stamp with the name えど" />
                 </picture>
             </Link>
             <h1>Edward Matthews</h1>

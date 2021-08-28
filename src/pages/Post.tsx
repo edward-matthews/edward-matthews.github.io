@@ -12,7 +12,6 @@ interface Frontmatter {
     title: string;
     slug: string;
     thumbnail: string;
-    banner: string;
     description: string;
     published: boolean;
     publishedOn: string;
@@ -62,8 +61,6 @@ const Post: React.FC = () => {
                             </i>
                         </a>
                     </small>
-
-                    <img src={postFrontmatter.banner} width="100%" />
                     {postContent}
                     <div className="tags">
                         {postFrontmatter.tags.map((tag, idx) => {

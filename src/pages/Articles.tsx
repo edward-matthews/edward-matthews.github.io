@@ -10,7 +10,6 @@ interface Frontmatter {
     title: string;
     slug: string;
     thumbnail: string;
-    banner: string;
     description: string;
     published: boolean;
     publishedOn: string;
