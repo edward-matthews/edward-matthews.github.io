@@ -12,9 +12,9 @@ const Banner: React.FC<Props> = ({ src, fileExt, altText, credit }: Props) => {
         <div>
             <picture>
                 <source srcSet={`/images/posts/${src}.webp`} type="image/webp" />
-                <img src={`/images/posts/${src}.${fileExt}`} alt={altText} />
+                <img className="bannerImg" src={`/images/posts/${src}.${fileExt}`} alt={altText} />
             </picture>
-            {credit && <small className="mx-auto">{credit}</small>}
+            {credit && <small style={{ display: 'flex', justifyContent: 'center' }}>{credit}</small>}
         </div>
     );
 };

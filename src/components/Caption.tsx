@@ -5,7 +5,11 @@ interface Props {
 }
 
 const Caption: React.FC<Props> = ({ children }: Props) => {
-    return <small className="figcaption">{children}</small>;
+    return (
+        <small style={{ display: 'flex', justifyContent: 'center' }} className="figcaption">
+            {children}
+        </small>
+    );
 };
 
 export default Caption;
