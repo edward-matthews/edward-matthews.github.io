@@ -4,7 +4,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 
-const MainBanner: React.FC = () => {
+interface Props {
+    modalControl: (val: boolean) => void;
+}
+
+const MainBanner: React.FC<Props> = ({ modalControl }: Props) => {
     return (
         <>
             <header>
@@ -18,9 +22,15 @@ const MainBanner: React.FC = () => {
             <Navbar bg="secondary" variant="light">
                 <Container>
                     <Nav className="mx-auto">
-                        <Nav.Link href="/portfolio">Portfolio</Nav.Link>
-                        <Nav.Link href="/articles">Articles</Nav.Link>
-                        <Nav.Link href="/contact">Contact</Nav.Link>
+                        <Nav.Link href="/portfolio">
+                            <i className="bi bi-journal-code"></i>Portfolio
+                        </Nav.Link>
+                        <Nav.Link href="/articles">
+                            <i className="bi bi-pen"></i>Articles
+                        </Nav.Link>
+                        <Nav.Link onClick={() => modalControl(true)}>
+                            <i className="bi bi-chat-text"></i>Contact
+                        </Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

@@ -12,8 +12,8 @@ const Home: React.FC = () => {
             />
             <h1>Welcome 👋</h1>
             <p>
-                My name is Edward Matthews. I&apos;m a South West, England based Web Developer working (primarily) with
-                React and Django.
+                My name is Edward Matthews. I&apos;m a South West England based freelance full stack web developer
+                working (primarily) with React and Django.
             </p>
         </>
     );

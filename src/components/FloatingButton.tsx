@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import FloatingItems from './FloatingItems';
-import ContactModal from './ContactModal';
 
-const FloatingButton: React.FC = () => {
+interface Props {
+    modalControl: (val: boolean) => void;
+}
+const FloatingButton: React.FC<Props> = ({ modalControl }: Props) => {
     const [expanded, setExpanded] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
     useEffect(() => {
         window.addEventListener('scroll', () => setExpanded(false));
     }, []);
@@ -19,8 +20,7 @@ const FloatingButton: React.FC = () => {
                     <i className="bi bi-plus" style={{ bottom: '0px' }} />
                 )}
             </button>
-            {expanded && <FloatingItems expand={setExpanded} modalControl={setModalOpen} />}
-            <ContactModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+            {expanded && <FloatingItems expand={setExpanded} modalControl={modalControl} />}
         </>
     );
 };
