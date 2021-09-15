@@ -10,11 +10,12 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }: Props) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [floatingButtonVisible, setFloatingButtonVisible] = useState(false);
     return (
         <>
-            <MainBanner modalControl={setModalOpen} />
+            <MainBanner modalControl={setModalOpen} menuShift={setFloatingButtonVisible} />
             <Container id="contentDiv">{children}</Container>
-            <FloatingButton modalControl={setModalOpen} />
+            <FloatingButton modalControl={setModalOpen} buttonVisibility={floatingButtonVisible} />
             <ContactModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </>
     );

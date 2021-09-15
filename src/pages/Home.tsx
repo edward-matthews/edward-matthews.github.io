@@ -11,9 +11,10 @@ const Home: React.FC = () => {
                 url="/"
             />
             <h1>Welcome 👋</h1>
+            <h4>My name is Edward Matthews.</h4>
             <p>
-                My name is Edward Matthews. I&apos;m a South West England based freelance full stack web developer
-                working (primarily) with React and Django.
+                I&apos;m a South West England based freelance full stack web developer working (primarily) with React
+                and Django.
             </p>
         </>
     );
