@@ -34,7 +34,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                     <td>GitHub</td>
                 </tr>
                 <tr
-                    onClick={() => handleClick('https://www.google.com/search?q=linkedin')}
+                    onClick={() => handleClick('https://www.linkedin.com/in/matthewsedwardj')}
                     style={{ textDecorationColor: '#2867B2' }}
                     className="unusual-link"
                 >
@@ -55,7 +55,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
 
                     <td>Twitter</td>
                 </tr>
-                <tr
+                {/* <tr
                     onClick={() => handleClick('https://www.google.com/search?q=youtube')}
                     style={{ textDecorationColor: '#c4302b' }}
                     className="unusual-link"
@@ -65,7 +65,7 @@ const SocialMediaTable: React.FC<Props> = ({ response, setDisplayContactForm }: 
                     </td>
 
                     <td>YouTube</td>
-                </tr>
+                </tr> */}
             </tbody>
         </Table>
     );

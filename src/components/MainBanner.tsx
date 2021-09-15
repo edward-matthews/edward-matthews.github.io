@@ -19,17 +19,17 @@ const MainBanner: React.FC<Props> = ({ modalControl }: Props) => {
                     </picture>
                 </Link>
             </header>
-            <Navbar bg="secondary" variant="light">
+            <Navbar variant="dark">
                 <Container>
                     <Nav className="mx-auto">
                         <Nav.Link href="/portfolio">
-                            <i className="bi bi-journal-code"></i>Portfolio
+                            <i className="bi bi-journal-code"></i> Portfolio
                         </Nav.Link>
                         <Nav.Link href="/articles">
-                            <i className="bi bi-pen"></i>Articles
+                            <i className="bi bi-pen"></i> Articles
                         </Nav.Link>
                         <Nav.Link onClick={() => modalControl(true)}>
-                            <i className="bi bi-chat-text"></i>Contact
+                            <i className="bi bi-chat-text"></i> Contact
                         </Nav.Link>
                     </Nav>
                 </Container>
