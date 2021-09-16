@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 
 interface Props {
@@ -23,6 +22,17 @@ const MainBanner: React.FC<Props> = ({ modalControl, menuShift }: Props) => {
             }
         }
     };
+
+    const moveContent = () => {
+        const contentDiv = document.getElementById('contentDiv');
+        if (contentDiv?.classList.contains('moved')) {
+            contentDiv.classList.remove('moved');
+        } else {
+            contentDiv?.classList.add('moved');
+        }
+
+        console.log(contentDiv);
+    };
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
     }, []);
@@ -36,9 +46,13 @@ const MainBanner: React.FC<Props> = ({ modalControl, menuShift }: Props) => {
                     </picture>
                 </Link>
             </header>
-            <Navbar variant="dark">
-                <Container>
+            <Navbar collapseOnSelect expand="sm" variant="dark">
+                <Navbar.Toggle onClick={moveContent} aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto">
+                        <Nav.Link href="/">
+                            <i className="bi bi-house"></i> Home
+                        </Nav.Link>
                         <Nav.Link href="/portfolio">
                             <i className="bi bi-journal-code"></i> Portfolio
                         </Nav.Link>
@@ -49,7 +63,7 @@ const MainBanner: React.FC<Props> = ({ modalControl, menuShift }: Props) => {
                             <i className="bi bi-chat-text"></i> Contact
                         </Nav.Link>
                     </Nav>
-                </Container>
+                </Navbar.Collapse>
             </Navbar>
         </div>
     );
