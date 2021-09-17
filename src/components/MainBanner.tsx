@@ -25,13 +25,7 @@ const MainBanner: React.FC<Props> = ({ modalControl, menuShift }: Props) => {
 
     const moveContent = () => {
         const contentDiv = document.getElementById('contentDiv');
-        if (contentDiv?.classList.contains('moved')) {
-            contentDiv.classList.remove('moved');
-        } else {
-            contentDiv?.classList.add('moved');
-        }
-
-        console.log(contentDiv);
+        contentDiv?.classList.toggle('moved');
     };
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

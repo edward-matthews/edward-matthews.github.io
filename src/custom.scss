@@ -75,9 +75,14 @@ $navsize: 3em;
 }
 
 .navbar-collapse.show {
-    z-index: 9999;
     background-color: rgba($primary, 0.75);
     padding: 0.75em;
+}
+
+.navbar-toggler {
+    position: relative;
+    top: -5px;
+    right: -5px;
 }
 
 tr {
@@ -107,10 +112,6 @@ tr:hover {
 
 .portfolioCard:hover {
     transform: scale(1.1);
-}
-
-#contentDiv {
-    max-width: 960px;
 }
 
 @keyframes floatingButtonAnimate {
@@ -219,6 +220,12 @@ code {
     color: $secondary;
 }
 
-.moved {
+#contentDiv {
+    max-width: 960px;
+    padding-top: 0;
+    transition: padding-top linear .25s;
+}
+
+#contentDiv.moved {
     padding-top: 8em;
 }
